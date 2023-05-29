@@ -19,16 +19,18 @@ mkdir cd ./<base>
 ```
 
 ## Docker
-Install docker.
+### Install docker
 ```bash
 sudo apt install docker.io -y
 ```
 
+### post install, one-off
 Add yourself to the docker group.
 ```bash
 sudo usermod -aG docker $USER
 ```
 
+### start docker daemon
 Start docker, in a WSL Ubuntu image it is necessary to use the command `dockerd`. In WSL the command `sudo service docker start` does not work. Neither does `sysctl docker start`. 
 ```bash
 ./auxiliary_scripts/start_docker_daemon
@@ -39,21 +41,28 @@ or
 sudo dockerd > /dev/null 2>&1 &
 ```
 
-### Build the container
-# https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli
-# Build an image from a Dockerfile
-# https://docs.docker.com/engine/reference/commandline/build/
+### Build the image
+<https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli>
+
+Build an image from a Dockerfile
+<https://docs.docker.com/engine/reference/commandline/build/>
 ```bash
 docker build . -t <tag_you_want>
+docker build -t <tag_for_the_image> -f <path_to_dockerfile> .
 ```
 
 ### Run the container
-# https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli
-# Create and run a new container from an image
-# https://docs.docker.com/engine/reference/commandline/run/
+https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli
+Create and run a new container from an image
+https://docs.docker.com/engine/reference/commandline/run/
 ```bash
-docker run -it <tag_you_want>
+docker run --rm -it <tag_you_want> bash
+# map the host directory "$(pwd)/host_directory" (in your PC), to the directory "ansible" in the image"
+docker run --rm -it -v $(pwd)/host_directory:/ansible dl_dockerfile_01 bash
 ```
+
+## Ansible
+
 
 ## Arista image
 Download cEOS from Arista.

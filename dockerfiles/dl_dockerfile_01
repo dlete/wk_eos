@@ -1,0 +1,96 @@
+# sourced from
+# https://github.com/willhallonline/docker-ansible
+# this file is for Ansible 2.13, with alpine 3.17 (2.13-alpine-3.17). Lives in:
+# includes ansible-core + ansible
+# https://raw.githubusercontent.com/willhallonline/docker-ansible/master/ansible-core/alpine316/Dockerfile
+
+# https://blog.devgenius.io/docker-a-beginners-guide-to-understanding-dockerfile-with-a-sample-project-f1a54eeedb0f
+#// build the image
+#docker build -t first-dockerfile -f Dockerfile1 .
+#// list image
+#docker images
+#// run the image
+#docker run -it -d first-dockerfile
+#// use exec for interaction
+#docker exec -it f1edbfca3eac bash
+#docker run --rm -it <image_name> bash
+
+
+# ARG is used to pass some arguments to consecutive instructions and this is only command other than a comment can be used before FROM. 
+# https://pypi.org/project/ansible-core/
+ARG ANSIBLE_CORE_VERSION=2.15.0
+# https://pypi.org/project/ansible/
+ARG ANSIBLE_VERSION=7.6.0
+# https://pypi.org/project/ansible-lint/
+ARG ANSIBLE_LINT=6.16.2
+ARG ALPINE_VERSION=3.17
+
+
+# pull base image
+FROM alpine:${ALPINE_VERSION}
+
+# ENV sets the environment variables for the subsequent instructions in the build stage.
+ENV ANSIBLE_CORE_VERSION ${ANSIBLE_CORE_VERSION}
+#ENV ANSIBLE_CORE_VERSION 2.15.0
+ENV ANSIBLE_VERSION ${ANSIBLE_VERSION}
+#ENV ANSIBLE_VERSION 7.6.0
+ENV ANSIBLE_LINT ${ANSIBLE_LINT}
+#ENV ANSIBLE_LINT 6.16.2
+
+# LABEL about the custom image
+LABEL maintainer="daniel.lete@heanet.ie"
+LABEL version="29 May 2023"
+LABEL description="Custom Docker image with \
+with Alpine 3.17 and Ansible 2.13"
+
+# EXPOSE is used as documentation for the port. This is just a communication between the person who builds the image and the person who runs the container. It doesn’t serve any other purpose other than documentation.
+
+RUN apk --no-cache add \
+        sudo \
+        python3\
+        py3-pip \
+        openssl \
+        ca-certificates \
+        sshpass \
+        openssh-client \
+        rsync \
+        # https://stackoverflow.com/questions/40944479/docker-how-to-use-bash-with-an-alpine-based-docker-image
+        # add bash, so that you can then run containers and use bash in the CLI
+        # docker run --rm -it <image_name> bash
+        # docker run --rm -it <image_name> /bin/sh
+        bash \
+        git && \
+    apk --no-cache add --virtual build-dependencies \
+        python3-dev \
+        libffi-dev \
+        musl-dev \
+        gcc \
+        cargo \
+        openssl-dev \
+        #libressl-dev \
+        build-base && \
+    pip3 install --upgrade pip wheel && \
+    pip3 install --upgrade cryptography cffi && \
+    # CANNOT MAKE IT WORK WITH VARIABLES NOW. BUT BEFORE I COULD!!
+    #pip3 install ansible-core==${ANSIBLE_CORE_VERSION} && \
+    pip3 install ansible-core && \
+    # CANNOT MAKE IT WORK WITH VARIABLES NOW. BUT BEFORE I COULD!!
+    #pip3 install ansible==${ANSIBLE_VERSION} && \
+    pip3 install ansible && \
+    # CANNOT MAKE IT WORK WITH VARIABLES NOW. BUT BEFORE I COULD!!
+    #pip3 install --ignore-installed ansible-lint==${ANSIBLE_LINT} && \
+    pip3 install --ignore-installed ansible-lint && \
+    pip3 install mitogen jmespath && \
+    pip3 install --upgrade pywinrm && \
+    apk del build-dependencies && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /root/.cache/pip && \
+    rm -rf /root/.cargo
+
+RUN mkdir /ansible && \
+    mkdir -p /etc/ansible && \
+    echo 'localhost' > /etc/ansible/hosts
+
+WORKDIR /ansible
+
+CMD [ "ansible-playbook", "--version" ]

@@ -5,7 +5,8 @@ Operation instructions for the repository.
 ## Start
 Start the docker daemon
 ```bash
-sudo dockerd > /dev/null 2>&1 &
+# https://askubuntu.com/questions/1375195/run-dockerd-as-a-background-on-wsl-ubuntu
+sudo dockerd > /dev/null 2>&1 & disown
 ```
 
 ## Verify
@@ -38,9 +39,26 @@ docker images
 ## Docker, remove images
 <https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes>
 
+Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not tagged or associated with a container):
+```bash
+docker system prune
+```
+
+To additionally remove any stopped containers and all unused images (not just dangling images), add the -a flag to the command:
+```bash
+docker system prune -a
+```
+
+```bash
+docker rmi <image> <image>
+```
+
+
 ## Docker, see containers
 ```bash
 docker ps
+docker container ls
+docker container ls -a
 ```
 
 ## Docker, see cpu/memory consumption
