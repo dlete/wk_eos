@@ -39,6 +39,7 @@ Start docker, in a WSL Ubuntu image it is necessary to use the command `dockerd`
 or
 ```bash
 sudo dockerd > /dev/null 2>&1 &
+disown
 ```
 
 ### Build the image
