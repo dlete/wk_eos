@@ -19,31 +19,37 @@
 
 
 # ARG is used to pass some arguments to consecutive instructions and this is only command other than a comment can be used before FROM. 
+ARG ALPINE_VERSION=3.17
 # https://pypi.org/project/ansible-core/
 ARG ANSIBLE_CORE_VERSION=2.15.0
 # https://pypi.org/project/ansible/
 ARG ANSIBLE_VERSION=7.6.0
 # https://pypi.org/project/ansible-lint/
 ARG ANSIBLE_LINT=6.16.2
-ARG ALPINE_VERSION=3.17
+
+ARG DOCKERFILE_MAINTAINER="daniel.lete@heanet.ie"
+ARG DOCKERFILE_DATE="29 May 2023"
+ARG DOCKERFILE_DESCRIPTION="Custom Docker image with \
+with Alpine 3.17 and Ansible 2.13"
 
 
 # pull base image
 FROM alpine:${ALPINE_VERSION}
 
 # ENV sets the environment variables for the subsequent instructions in the build stage.
-ENV ANSIBLE_CORE_VERSION ${ANSIBLE_CORE_VERSION}
-#ENV ANSIBLE_CORE_VERSION 2.15.0
-ENV ANSIBLE_VERSION ${ANSIBLE_VERSION}
-#ENV ANSIBLE_VERSION 7.6.0
-ENV ANSIBLE_LINT ${ANSIBLE_LINT}
-#ENV ANSIBLE_LINT 6.16.2
+# ENV variable=value
+# https://docs.docker.com/engine/reference/builder/
+ENV ANSIBLE_CORE_VERSION=${ANSIBLE_CORE_VERSION}
+#ENV ANSIBLE_CORE_VERSION=2.15.0
+ENV ANSIBLE_VERSION=${ANSIBLE_VERSION}
+#ENV ANSIBLE_VERSION=7.6.0
+ENV ANSIBLE_LINT=${ANSIBLE_LINT}
+#ENV ANSIBLE_LINT=6.16.2
 
 # LABEL about the custom image
-LABEL maintainer="daniel.lete@heanet.ie"
-LABEL version="29 May 2023"
-LABEL description="Custom Docker image with \
-with Alpine 3.17 and Ansible 2.13"
+LABEL maintainer=${DOCKERFILE_MAINTAINER}
+LABEL version=${DOCKERFILE_DATE}
+LABEL description=${DOCKERFILE_DESCRIPTION}
 
 # EXPOSE is used as documentation for the port. This is just a communication between the person who builds the image and the person who runs the container. It doesn’t serve any other purpose other than documentation.
 

@@ -28,6 +28,15 @@ sudo start-stop-daemon -K -v --name dockerd
 # Daily routine
 1. Start the `dockerd` daemon
 2. Stop the `dockerd` daemon
+####// build the image
+#docker build -t first-dockerfile -f Dockerfile1 .
+
+Start the container
+# map the host directory "$(pwd)/host_directory" (in your PC), to the directory "ansible" in the image"
+```bash
+docker run --rm -it -v $(pwd)/host_directory:/ansible dl_dockerfile_01 bash
+```
+
 
 
 # How to
