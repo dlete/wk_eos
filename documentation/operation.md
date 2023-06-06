@@ -6,7 +6,8 @@ Operation instructions for the repository.
 Start the docker daemon
 ```bash
 # https://askubuntu.com/questions/1375195/run-dockerd-as-a-background-on-wsl-ubuntu
-sudo dockerd > /dev/null 2>&1 & disown
+sudo dockerd > /dev/null 2>&1 & 
+disown
 ```
 
 ## Verify
@@ -31,10 +32,17 @@ sudo start-stop-daemon -K -v --name dockerd
 ####// build the image
 #docker build -t first-dockerfile -f Dockerfile1 .
 
-Start the container
-# map the host directory "$(pwd)/host_directory" (in your PC), to the directory "ansible" in the image"
+## Start the container
 ```bash
-docker run --rm -it -v $(pwd)/host_directory:/ansible dl_dockerfile_01 bash
+# map the host directory "$(pwd)/host_directory" (in your PC), to the directory "ansible" in the image"
+docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_dockerfile_02 bash
+docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_image_02 bash
+```
+
+## Docker, connect to a running container
+```bash
+# I think it is like this, but not sure
+docker exec -it container bash
 ```
 
 

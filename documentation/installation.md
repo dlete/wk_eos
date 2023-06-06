@@ -59,7 +59,7 @@ https://docs.docker.com/engine/reference/commandline/run/
 ```bash
 docker run --rm -it <tag_you_want> bash
 # map the host directory "$(pwd)/host_directory" (in your PC), to the directory "ansible" in the image"
-docker run --rm -it -v $(pwd)/host_directory:/ansible dl_dockerfile_01 bash
+docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_dockerfile_01 bash
 ```
 
 ## Ansible

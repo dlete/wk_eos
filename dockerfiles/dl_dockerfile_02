@@ -32,7 +32,7 @@ ARG DOCKERFILE_DATE="29 May 2023"
 ARG DOCKERFILE_DESCRIPTION="Custom Docker image with \
 with Alpine 3.17 and Ansible 2.13"
 
-
+### BASE OS
 # pull base image
 FROM alpine:${ALPINE_VERSION}
 
@@ -53,6 +53,7 @@ LABEL description=${DOCKERFILE_DESCRIPTION}
 
 # EXPOSE is used as documentation for the port. This is just a communication between the person who builds the image and the person who runs the container. It doesn’t serve any other purpose other than documentation.
 
+### OS PACKAGES
 RUN apk --no-cache add \
         sudo \
         python3\
@@ -77,6 +78,7 @@ RUN apk --no-cache add \
         openssl-dev \
         #libressl-dev \
         build-base && \
+    ### PYTHON PACKAGES LAYER
     pip3 install --upgrade pip wheel && \
     pip3 install --upgrade cryptography cffi && \
     # CANNOT MAKE IT WORK WITH VARIABLES NOW. BUT BEFORE I COULD!!
@@ -95,6 +97,7 @@ RUN apk --no-cache add \
     rm -rf /root/.cache/pip && \
     rm -rf /root/.cargo
 
+### SOURCE CODE AND POST INSTALLATION
 RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
     echo 'localhost' > /etc/ansible/hosts

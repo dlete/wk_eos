@@ -59,3 +59,8 @@ docker inspect blissful_hopper
 ```bash
 docker logs blissful_hopper
 ```
+
+## Image history
+```bash
+docker history <image_name>
+```
