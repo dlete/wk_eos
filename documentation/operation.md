@@ -64,6 +64,11 @@ docker-compose stop
 docker-compose down
 ```
 
+## Execute ansible commands
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible localhost -m ping -i ansible_root/inventory.txt
+```
+
 
 # How to
 ## Docker, see images

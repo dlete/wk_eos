@@ -14,12 +14,17 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 <https://heanet.udemy.com/course/learn-docker/>
 
 ## Articles
+### Dzone
 <https://dzone.com/articles/ci-dockerizing-an-ansible-playbook-and-deploying-t>
 
+### Microsoft
 <https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli>
 
 ### How to use Arista cEOS to build a topology to test features
 <https://kevin-wang-xin.medium.com/how-to-use-arista-ceos-to-build-a-topology-to-test-features-49d316110b98>
+
+### Containerlab with cEOS
+<https://containerlab.dev/manual/kinds/ceos/>
 
 # Commands
 
