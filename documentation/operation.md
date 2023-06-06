@@ -39,12 +39,30 @@ docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_dockerfile_02 bash
 docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_image_02 bash
 ```
 
-## Docker, connect to a running container
 ```bash
-# I think it is like this, but not sure
-docker exec -it container bash
+docker-compose up -d
 ```
 
+## Docker, connect to a running container
+```bash
+# for a server
+docker exec -it <container_name> bash
+# for an Arista
+docker exec -it <container_name> Cli
+docker exec -it ceos1 Cli
+```
+
+## restart containers
+```bash
+# restart container without loss configuration
+docker-compose stop
+```
+
+## wipe out everything
+```bash
+# wipe out everything
+docker-compose down
+```
 
 
 # How to

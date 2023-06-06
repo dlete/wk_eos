@@ -70,6 +70,17 @@ Download cEOS from Arista.
 Download too the README file
 Transfer to the Linux instance.
 
+### Import the Arista image
+```bash
+# import the downloaded cEOS-lab.tar.xz image
+docker import cEOS-lab.tar.xz ceosimage:4.21.0F
+```
+
+### Create containers of Aristas
+With compose
+
+
+
 # References
 ## Arista
 <https://avd.sh/en/stable/docs/installation/collection-installation.html>

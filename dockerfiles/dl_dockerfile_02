@@ -14,8 +14,8 @@
 #// use exec for interaction
 #docker exec -it f1edbfca3eac bash
 #docker run --rm -it <image_name> bash
-# map the host directory "$(pwd)/host_directory" (in your PC), to the directory "ansible" in the image"
-####docker run --rm -it -v $(pwd)/host_directory:/ansible dl_dockerfile_01 bash
+# map the host directory "$(pwd)/ansible_root" (in your PC), to the directory "ansible" in the image"
+####docker run --rm -it -v $(pwd)/ansible_root:/ansible dl_image_02 bash
 
 
 # ARG is used to pass some arguments to consecutive instructions and this is only command other than a comment can be used before FROM. 

@@ -1,3 +1,6 @@
+# dlete, Arista images
+cEOS64-lab-*.tar
+
 # dlete, Latex temporary files
 *.aux
 *.bbl
