@@ -2,4 +2,4 @@ version: '3.7'
 
 services:
   my_ans:
-    image: dl_dockerfile_02
+    image: dl_image_02

@@ -5,5 +5,4 @@ This repository has code for Arista labs.
 Look in the `documentation` directory for the `installation.md` file.
 
 # Author
-
 Daniel Lete
