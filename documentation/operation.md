@@ -69,6 +69,10 @@ docker-compose down
 docker exec ceos_basic_01_my_ans_1 ansible localhost -m ping -i ansible_root/inventory.txt
 ```
 
+## Execut ansible playbook
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-playbook <playbook_filename>
+```
 
 # How to
 ## Docker, see images
@@ -119,6 +123,30 @@ docker stop <container__id/name?>
 ## Docker, connect to an Arista running image
 ```bash
 docker exec -it ceos1 Cli
+```
+
+## Ansible, get information/documentation
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-doc -l
+```
+
+## Ansible, get help 
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
+```
+
+## Ansible, execute a one-off command
+```bash
+ansible <hosts> -a <command>
+ansible <hosts> -m <module>
+ansible target1 -m ping
+```
+
+## Ansible, execute a playbook
+```bash
+ansible-playbook <playbook_name>
+ansible-playbook playbook_server.yaml
+ansible-playbook <playbook_name> -i <inventory_file>
 ```
 
 
