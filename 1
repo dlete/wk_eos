@@ -1,0 +1,109 @@
+time="2023-06-13T13:11:02.770938402+01:00" level=info msg="Starting up"
+time="2023-06-13T13:11:02.772645102+01:00" level=info msg="libcontainerd: started new containerd process" pid=709
+time="2023-06-13T13:11:02.772747002+01:00" level=info msg="parsed scheme: \"unix\"" module=grpc
+time="2023-06-13T13:11:02.772772602+01:00" level=info msg="scheme \"unix\" not registered, fallback to default scheme" module=grpc
+time="2023-06-13T13:11:02.772819602+01:00" level=info msg="ccResolverWrapper: sending update to cc: {[{unix:///var/run/docker/containerd/containerd.sock  <nil> 0 <nil>}] <nil> <nil>}" module=grpc
+time="2023-06-13T13:11:02.772845602+01:00" level=info msg="ClientConn switching balancer to \"pick_first\"" module=grpc
+time="2023-06-13T13:11:02+01:00" level=warning msg="containerd config version `1` has been deprecated and will be removed in containerd v2.0, please switch to version `2`, see https://github.com/containerd/containerd/blob/main/docs/PLUGINS.md#version-header"
+time="2023-06-13T13:11:02.809946507+01:00" level=info msg="starting containerd" revision= version="1.6.12-0ubuntu1~22.04.1"
+time="2023-06-13T13:11:02.820985108+01:00" level=info msg="loading plugin \"io.containerd.content.v1.content\"..." type=io.containerd.content.v1
+time="2023-06-13T13:11:02.821130308+01:00" level=info msg="loading plugin \"io.containerd.snapshotter.v1.aufs\"..." type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823019808+01:00" level=info msg="skip loading plugin \"io.containerd.snapshotter.v1.aufs\"..." error="aufs is not supported (modprobe aufs failed: exit status 1 \"modprobe: FATAL: Module aufs not found in directory /lib/modules/5.15.90.1-microsoft-standard-WSL2\\n\"): skip plugin" type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823064708+01:00" level=info msg="loading plugin \"io.containerd.snapshotter.v1.btrfs\"..." type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823304609+01:00" level=info msg="skip loading plugin \"io.containerd.snapshotter.v1.btrfs\"..." error="path /var/lib/docker/containerd/daemon/io.containerd.snapshotter.v1.btrfs (ext4) must be a btrfs filesystem to be used with the btrfs snapshotter: skip plugin" type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823336509+01:00" level=info msg="loading plugin \"io.containerd.snapshotter.v1.devmapper\"..." type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823361609+01:00" level=warning msg="failed to load plugin io.containerd.snapshotter.v1.devmapper" error="devmapper not configured"
+time="2023-06-13T13:11:02.823369809+01:00" level=info msg="loading plugin \"io.containerd.snapshotter.v1.native\"..." type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823388209+01:00" level=info msg="loading plugin \"io.containerd.snapshotter.v1.overlayfs\"..." type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823530009+01:00" level=info msg="loading plugin \"io.containerd.snapshotter.v1.zfs\"..." type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823763809+01:00" level=info msg="skip loading plugin \"io.containerd.snapshotter.v1.zfs\"..." error="path /var/lib/docker/containerd/daemon/io.containerd.snapshotter.v1.zfs must be a zfs filesystem to be used with the zfs snapshotter: skip plugin" type=io.containerd.snapshotter.v1
+time="2023-06-13T13:11:02.823796109+01:00" level=info msg="loading plugin \"io.containerd.metadata.v1.bolt\"..." type=io.containerd.metadata.v1
+time="2023-06-13T13:11:02.823813509+01:00" level=warning msg="could not use snapshotter devmapper in metadata plugin" error="devmapper not configured"
+time="2023-06-13T13:11:02.823822009+01:00" level=info msg="metadata content store policy set" policy=shared
+time="2023-06-13T13:11:02.823960809+01:00" level=info msg="loading plugin \"io.containerd.differ.v1.walking\"..." type=io.containerd.differ.v1
+time="2023-06-13T13:11:02.824006809+01:00" level=info msg="loading plugin \"io.containerd.event.v1.exchange\"..." type=io.containerd.event.v1
+time="2023-06-13T13:11:02.824019809+01:00" level=info msg="loading plugin \"io.containerd.gc.v1.scheduler\"..." type=io.containerd.gc.v1
+time="2023-06-13T13:11:02.824079409+01:00" level=info msg="loading plugin \"io.containerd.service.v1.introspection-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824140309+01:00" level=info msg="loading plugin \"io.containerd.service.v1.containers-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824174609+01:00" level=info msg="loading plugin \"io.containerd.service.v1.content-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824208909+01:00" level=info msg="loading plugin \"io.containerd.service.v1.diff-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824250309+01:00" level=info msg="loading plugin \"io.containerd.service.v1.images-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824260509+01:00" level=info msg="loading plugin \"io.containerd.service.v1.leases-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824288809+01:00" level=info msg="loading plugin \"io.containerd.service.v1.namespaces-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824298709+01:00" level=info msg="loading plugin \"io.containerd.service.v1.snapshots-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824309909+01:00" level=info msg="loading plugin \"io.containerd.runtime.v1.linux\"..." type=io.containerd.runtime.v1
+time="2023-06-13T13:11:02.824405809+01:00" level=info msg="loading plugin \"io.containerd.runtime.v2.task\"..." type=io.containerd.runtime.v2
+time="2023-06-13T13:11:02.824508009+01:00" level=info msg="loading plugin \"io.containerd.monitor.v1.cgroups\"..." type=io.containerd.monitor.v1
+time="2023-06-13T13:11:02.824828409+01:00" level=info msg="loading plugin \"io.containerd.service.v1.tasks-service\"..." type=io.containerd.service.v1
+time="2023-06-13T13:11:02.824885409+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.introspection\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.824901109+01:00" level=info msg="loading plugin \"io.containerd.internal.v1.restart\"..." type=io.containerd.internal.v1
+time="2023-06-13T13:11:02.825064409+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.containers\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825146609+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.content\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825256809+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.diff\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825280909+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.events\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825336609+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.healthcheck\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825418209+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.images\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825439209+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.leases\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825460709+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.namespaces\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825498009+01:00" level=info msg="loading plugin \"io.containerd.internal.v1.opt\"..." type=io.containerd.internal.v1
+time="2023-06-13T13:11:02.825601209+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.snapshots\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825617209+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.tasks\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825642409+01:00" level=info msg="loading plugin \"io.containerd.grpc.v1.version\"..." type=io.containerd.grpc.v1
+time="2023-06-13T13:11:02.825655709+01:00" level=info msg="loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." type=io.containerd.tracing.processor.v1
+time="2023-06-13T13:11:02.825666809+01:00" level=info msg="skip loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." error="no OpenTelemetry endpoint: skip plugin" type=io.containerd.tracing.processor.v1
+time="2023-06-13T13:11:02.825680209+01:00" level=info msg="loading plugin \"io.containerd.internal.v1.tracing\"..." type=io.containerd.internal.v1
+time="2023-06-13T13:11:02.825693909+01:00" level=error msg="failed to initialize a tracing processor \"otlp\"" error="no OpenTelemetry endpoint: skip plugin"
+time="2023-06-13T13:11:02.825951109+01:00" level=info msg=serving... address=/var/run/docker/containerd/containerd-debug.sock
+time="2023-06-13T13:11:02.826080109+01:00" level=info msg=serving... address=/var/run/docker/containerd/containerd.sock.ttrpc
+time="2023-06-13T13:11:02.826549909+01:00" level=info msg=serving... address=/var/run/docker/containerd/containerd.sock
+time="2023-06-13T13:11:02.826666109+01:00" level=info msg="containerd successfully booted in 0.017400s"
+time="2023-06-13T13:11:02.839517110+01:00" level=info msg="parsed scheme: \"unix\"" module=grpc
+time="2023-06-13T13:11:02.839570310+01:00" level=info msg="scheme \"unix\" not registered, fallback to default scheme" module=grpc
+time="2023-06-13T13:11:02.839591110+01:00" level=info msg="ccResolverWrapper: sending update to cc: {[{unix:///var/run/docker/containerd/containerd.sock  <nil> 0 <nil>}] <nil> <nil>}" module=grpc
+time="2023-06-13T13:11:02.839601010+01:00" level=info msg="ClientConn switching balancer to \"pick_first\"" module=grpc
+time="2023-06-13T13:11:02.840717411+01:00" level=info msg="parsed scheme: \"unix\"" module=grpc
+time="2023-06-13T13:11:02.840750011+01:00" level=info msg="scheme \"unix\" not registered, fallback to default scheme" module=grpc
+time="2023-06-13T13:11:02.840771811+01:00" level=info msg="ccResolverWrapper: sending update to cc: {[{unix:///var/run/docker/containerd/containerd.sock  <nil> 0 <nil>}] <nil> <nil>}" module=grpc
+time="2023-06-13T13:11:02.840785611+01:00" level=info msg="ClientConn switching balancer to \"pick_first\"" module=grpc
+time="2023-06-13T13:11:02.850513012+01:00" level=info msg="[graphdriver] using prior storage driver: overlay2"
+time="2023-06-13T13:11:02.857090813+01:00" level=warning msg="Your kernel does not support cgroup blkio weight"
+time="2023-06-13T13:11:02.857120713+01:00" level=warning msg="Your kernel does not support cgroup blkio weight_device"
+time="2023-06-13T13:11:02.857129913+01:00" level=warning msg="Your kernel does not support cgroup blkio throttle.read_bps_device"
+time="2023-06-13T13:11:02.857134913+01:00" level=warning msg="Your kernel does not support cgroup blkio throttle.write_bps_device"
+time="2023-06-13T13:11:02.857159113+01:00" level=warning msg="Your kernel does not support cgroup blkio throttle.read_iops_device"
+time="2023-06-13T13:11:02.857167213+01:00" level=warning msg="Your kernel does not support cgroup blkio throttle.write_iops_device"
+time="2023-06-13T13:11:02.857308113+01:00" level=info msg="Loading containers: start."
+time="2023-06-13T13:11:04.015681251+01:00" level=info msg="Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used to set a preferred IP address"
+time="2023-06-13T13:11:04.151201168+01:00" level=info msg="Loading containers: done."
+time="2023-06-13T13:11:04.164088569+01:00" level=info msg="Docker daemon" commit="20.10.21-0ubuntu1~22.04.3" graphdriver(s)=overlay2 version=20.10.21
+time="2023-06-13T13:11:04.164163569+01:00" level=info msg="Daemon has completed initialization"
+time="2023-06-13T13:11:04.177796771+01:00" level=info msg="API listen on /var/run/docker.sock"
+time="2023-06-13T13:11:05.548555935+01:00" level=info msg="loading plugin \"io.containerd.event.v1.publisher\"..." runtime=io.containerd.runc.v2 type=io.containerd.event.v1
+time="2023-06-13T13:11:05.548611535+01:00" level=info msg="loading plugin \"io.containerd.internal.v1.shutdown\"..." runtime=io.containerd.runc.v2 type=io.containerd.internal.v1
+time="2023-06-13T13:11:05.548630335+01:00" level=info msg="loading plugin \"io.containerd.ttrpc.v1.task\"..." runtime=io.containerd.runc.v2 type=io.containerd.ttrpc.v1
+time="2023-06-13T13:11:05.548890835+01:00" level=info msg="starting signal loop" namespace=moby path=/run/docker/containerd/daemon/io.containerd.runtime.v2.task/moby/4ea48481dcd5b8148facfaf78e7ddc772ee74b85ac5b6a4f95ff23efb1b4a01f pid=864 runtime=io.containerd.runc.v2
+time="2023-06-13T13:11:05.938141482+01:00" level=error msg="loading cgroup for 885" error="cgroups: cannot find cgroup mount destination"
+time="2023-06-13T13:11:05.945739183+01:00" level=error msg="loading cgroup for 885" error="cgroups: cgroup deleted"
+time="2023-06-13T13:11:05.965633885+01:00" level=info msg="shim disconnected" id=4ea48481dcd5b8148facfaf78e7ddc772ee74b85ac5b6a4f95ff23efb1b4a01f
+time="2023-06-13T13:11:05.965721585+01:00" level=warning msg="cleaning up after shim disconnected" id=4ea48481dcd5b8148facfaf78e7ddc772ee74b85ac5b6a4f95ff23efb1b4a01f namespace=moby
+time="2023-06-13T13:11:05.965719285+01:00" level=info msg="ignoring event" container=4ea48481dcd5b8148facfaf78e7ddc772ee74b85ac5b6a4f95ff23efb1b4a01f module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+time="2023-06-13T13:11:05.965756585+01:00" level=info msg="cleaning up dead shim"
+time="2023-06-13T13:11:05.974417886+01:00" level=warning msg="cleanup warnings time=\"2023-06-13T13:11:05+01:00\" level=info msg=\"starting signal loop\" namespace=moby pid=924 runtime=io.containerd.runc.v2\n"
+time="2023-06-13T13:11:21.396790191+01:00" level=warning msg="failed to prune image docker.io/library/hello-world@sha256:fc6cf906cbfa013e80938cdf0bb199fbdbb86d6e3e013783e5a766f50f5dbce0: No such image: hello-world@sha256:fc6cf906cbfa013e80938cdf0bb199fbdbb86d6e3e013783e5a766f50f5dbce0"
+time="2023-06-13T13:14:53.214984954+01:00" level=error msg="Not continuing with pull after error: errors:\ndenied: requested access to the resource is denied\nunauthorized: authentication required\n"
+time="2023-06-13T13:14:53.215046654+01:00" level=info msg="Ignoring extra error returned from registry: unauthorized: authentication required"
+time="2023-06-13T13:23:59.021780439+01:00" level=info msg="loading plugin \"io.containerd.event.v1.publisher\"..." runtime=io.containerd.runc.v2 type=io.containerd.event.v1
+time="2023-06-13T13:23:59.021847439+01:00" level=info msg="loading plugin \"io.containerd.internal.v1.shutdown\"..." runtime=io.containerd.runc.v2 type=io.containerd.internal.v1
+time="2023-06-13T13:23:59.021857339+01:00" level=info msg="loading plugin \"io.containerd.ttrpc.v1.task\"..." runtime=io.containerd.runc.v2 type=io.containerd.ttrpc.v1
+time="2023-06-13T13:23:59.022168739+01:00" level=info msg="starting signal loop" namespace=moby path=/run/docker/containerd/daemon/io.containerd.runtime.v2.task/moby/fc83ba7161d88af7f77113f2f4dcb6110c1e297bc3ec532bcba3204ff8e6767d pid=2996 runtime=io.containerd.runc.v2
+time="2023-06-13T13:23:59.402714943+01:00" level=error msg="loading cgroup for 3017" error="cgroups: cannot find cgroup mount destination"
+time="2023-06-13T13:23:59.415205539+01:00" level=error msg="loading cgroup for 3017" error="cgroups: cannot find cgroup mount destination"
+time="2023-06-13T13:24:25.538438834+01:00" level=error msg="loading cgroup for 4209" error="cgroups: cannot find cgroup mount destination"
+time="2023-06-13T13:26:15.589718098+01:00" level=info msg="Container failed to exit within 10s of signal 15 - using the force" container=fc83ba7161d88af7f77113f2f4dcb6110c1e297bc3ec532bcba3204ff8e6767d
+time="2023-06-13T13:26:25.628188311+01:00" level=error msg="Container failed to exit within 10 seconds of kill - trying direct SIGKILL" container=fc83ba7161d88af7f77113f2f4dcb6110c1e297bc3ec532bcba3204ff8e6767d error="context deadline exceeded"
+time="2023-06-13T13:26:29.631642889+01:00" level=error msg="Error killing the container" container=fc83ba7161d88af7f77113f2f4dcb6110c1e297bc3ec532bcba3204ff8e6767d error="tried to kill container, but did not receive an exit event"
+time="2023-06-13T13:26:29.631830189+01:00" level=error msg="Handler for POST /v1.41/containers/ceos1/stop returned error: cannot stop container: ceos1: tried to kill container, but did not receive an exit event"
+time="2023-06-13T13:26:57.048165501+01:00" level=info msg="Container failed to exit within 10s of signal 15 - using the force" container=fc83ba7161d88af7f77113f2f4dcb6110c1e297bc3ec532bcba3204ff8e6767d
+time="2023-06-13T13:27:07.092982576+01:00" level=error msg="Container failed to exit within 10 seconds of kill - trying direct SIGKILL" container=fc83ba7161d88af7f77113f2f4dcb6110c1e297bc3ec532bcba3204ff8e6767d error="context deadline exceeded"
+time="2023-06-13T13:27:11.097297550+01:00" level=error msg="Error killing the container" container=fc83ba7161d88af7f77113f2f4dcb6110c1e297bc3ec532bcba3204ff8e6767d error="tried to kill container, but did not receive an exit event"
+time="2023-06-13T13:27:11.097599250+01:00" level=error msg="Handler for POST /v1.41/containers/ceos1/stop returned error: cannot stop container: ceos1: tried to kill container, but did not receive an exit event"

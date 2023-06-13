@@ -6,8 +6,7 @@ Operation instructions for the repository.
 Start the docker daemon
 ```bash
 # https://askubuntu.com/questions/1375195/run-dockerd-as-a-background-on-wsl-ubuntu
-sudo dockerd > /dev/null 2>&1 & 
-disown
+sudo dockerd > /dev/null 2>&1 & disown
 ```
 
 ## Verify
@@ -27,10 +26,23 @@ sudo start-stop-daemon -K -v --name dockerd
 ```
 
 # Daily routine
-1. Start the `dockerd` daemon
-2. Stop the `dockerd` daemon
-####// build the image
-#docker build -t first-dockerfile -f Dockerfile1 .
+## Start the `dockerd` daemon
+Starting the daemon directly does not seem to work (at least in an Ubuntu instance in WLS). I have found that what it works is this sequence. 
+1. Stop the `dockerd` daemon
+```bash
+sudo start-stop-daemon -K -v --name dockerd
+```
+
+2. Start the `dockerd` daemon
+```bash
+sudo dockerd > /dev/null 2>&1 & disown
+```
+
+3. Verify the `dockerd` daemon has started
+```bash
+docker run hello-world
+```
+
 
 ## Start the container
 ```bash
@@ -39,9 +51,11 @@ docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_dockerfile_02 bash
 docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_image_02 bash
 ```
 
+This is the canonical way, through `dockercompose.yml` files:
 ```bash
 docker-compose up -d
 ```
+
 
 ## Docker, connect to a running container
 ```bash
@@ -52,13 +66,13 @@ docker exec -it <container_name> Cli
 docker exec -it ceos1 Cli
 ```
 
-## restart containers
+## Docker, restart containers
 ```bash
 # restart container without loss configuration
 docker-compose stop
 ```
 
-## wipe out everything
+## Docker, wipe out everything
 ```bash
 # wipe out everything
 docker-compose down
@@ -149,6 +163,27 @@ ansible-playbook playbook_server.yaml
 ansible-playbook <playbook_name> -i <inventory_file>
 ```
 
+## Arista EOS, change from `bash` to `cli`
+If you have arrived to `bash` from the `cli`, then just type `exit`.
+If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
+
+## Arista, enable LLDP in Docker
+
+<https://youtu.be/RgbWDw__xqM?t=277>
+
+## WSL stop server
+Open PowerShell as an administrator
+```bash
+# see distributions and their status
+wsl -l -v
+# stop
+wsl -t Ubuntu
+# start
+wsl -d Ubuntu
+# Verify the distribution has started
+wsl -l -v
+```
+
 
 # Archive
 ## Conda environments
@@ -161,6 +196,20 @@ conda config --set auto_activate_base true
 # do not activate every time a terminal is opened
 conda config --set auto_activate_base false
 ```
+
+## WSL stop server
+Open PowerShell as an administrator
+```bash
+# see distributions and their status
+wsl -l -v
+# stop
+wsl -t Ubuntu
+# start
+wsl -d Ubuntu
+# Verify the distribution has started
+wsl -l -v
+```
+
 
 ### See all the conda environments
 ```bash

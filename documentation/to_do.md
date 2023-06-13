@@ -7,6 +7,7 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 
 ## What is servicenow?
 
+
 # References
 
 ## Courses

@@ -13,7 +13,7 @@ mkdir ./<directory_name>
 ```
 from now on we will refer to `<directory_name>` as `<base>`
 
-Change the prompt to the newly created directory
+Change directory to the newly created directory
 ```bash
 mkdir cd ./<base>
 ```
@@ -73,7 +73,7 @@ Transfer to the Linux instance.
 ### Import the Arista image
 ```bash
 # import the downloaded cEOS-lab.tar.xz image
-docker import cEOS-lab.tar.xz ceosimage:4.21.0F
+docker import cEOS-lab.tar.xz ceosimage:4.29.3M
 ```
 
 ### Create containers of Aristas
@@ -86,14 +86,33 @@ With compose
 <https://avd.sh/en/stable/docs/installation/collection-installation.html>
 
 # Uninstall
+## Remove Docker
+
 ## Delete the base directory
 Arista AVD collection installation
 ```bash
 sudo rm -r ./<directory_name>
 ```
 
+# sandbox, install
+## install WSL, ubuntu
+
+## install docker
+<https://docs.docker.com/engine/install/ubuntu/>
+install from apt
+`docker-ce`
+
+verify
+sudo service docker start
+sudo docker run hello-world
+
+## install containerlab
+<https://containerlab.dev/install/>
 
 
+# sandbox, uninstall
+## uninstall docker
+<https://docs.docker.com/engine/install/ubuntu/>
 
 # Archive
 ## Create a conda environment
