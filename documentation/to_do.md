@@ -21,11 +21,25 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 ### Microsoft
 <https://learn.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli>
 
+### Arista, cEOS-lab in GNS3
+<https://arista.my.site.com/AristaCommunity/s/article/ceos-lab-in-gns3>
+
+### Arista, Network CI/CD Part 1 - Building network topologies with Docker and cEOS-lab
+<https://arista.my.site.com/AristaCommunity/s/article/ceos-lab-topo>
+
+### Containerlab, quick start
+<https://containerlab.dev/quickstart/>
+
 ### How to use Arista cEOS to build a topology to test features
 <https://kevin-wang-xin.medium.com/how-to-use-arista-ceos-to-build-a-topology-to-test-features-49d316110b98>
 
 ### Containerlab with cEOS
 <https://containerlab.dev/manual/kinds/ceos/>
+
+### How to setup Arista cEOS Docker Image
+<https://www.youtube.com/watch?v=ngS80TzrSAw>
+
+
 
 # Commands
 

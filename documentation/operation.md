@@ -176,13 +176,16 @@ Open PowerShell as an administrator
 ```bash
 # see distributions and their status
 wsl -l -v
-# stop
+# stop all distributions
+wsl --shutdown
+# terminate a specific distribution
 wsl -t Ubuntu
 # start
 wsl -d Ubuntu
 # Verify the distribution has started
 wsl -l -v
 ```
+<https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows>
 
 
 # Archive
@@ -195,19 +198,6 @@ wsl -l -v
 conda config --set auto_activate_base true
 # do not activate every time a terminal is opened
 conda config --set auto_activate_base false
-```
-
-## WSL stop server
-Open PowerShell as an administrator
-```bash
-# see distributions and their status
-wsl -l -v
-# stop
-wsl -t Ubuntu
-# start
-wsl -d Ubuntu
-# Verify the distribution has started
-wsl -l -v
 ```
 
 

@@ -100,14 +100,57 @@ sudo rm -r ./<directory_name>
 ## install docker
 <https://docs.docker.com/engine/install/ubuntu/>
 install from apt
-`docker-ce`
+`docker-ce` is needed because it is a requirement of containerlab
 
 verify
+```bash
 sudo service docker start
 sudo docker run hello-world
+```
 
 ## install containerlab
 <https://containerlab.dev/install/>
+BUT do so as a container
+<https://containerlab.dev/install/#container>
+
+Launch containerlab
+```bash
+docker run --rm -it --privileged \
+    --name container_containerlab \
+    --network host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/netns:/var/run/netns \
+    -v /etc/hosts:/etc/hosts \
+    -v /var/lib/docker/containers:/var/lib/docker/containers \
+    --pid="host" \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    ghcr.io/srl-labs/clab bash
+```
+
+```bash
+docker run --rm -it --privileged \
+    --network host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/netns:/var/run/netns \
+    -v /etc/hosts:/etc/hosts \
+    -v /var/lib/docker/containers:/var/lib/docker/containers \
+    --pid="host" \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    ghcr.io/srl-labs/clab bash
+```
+
+# sandbox, operate
+## docker
+### start
+sudo service docker start
+### verify 
+sudo service docker status
+or
+docker run hello-world
+### stop
+sudo service docker stop
 
 
 # sandbox, uninstall
