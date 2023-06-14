@@ -29,6 +29,9 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 ### Arista, AVD
 <https://avd.sh/en/stable/docs/installation/collection-installation.html>
 
+### Arista, implementation of Setup Ansible AVD With VS Code Container
+<https://avd.sh/en/stable/docs/how-to/vscode-container.html>
+
 ### Containerlab, quick start
 <https://containerlab.dev/quickstart/>
 
