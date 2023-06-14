@@ -9,7 +9,6 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 
 
 # References
-
 ## Courses
 ### UDEMY, Docker for the Absolute Beginner - Hands On - DevOps
 <https://heanet.udemy.com/course/learn-docker/>
@@ -27,6 +26,9 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 ### Arista, Network CI/CD Part 1 - Building network topologies with Docker and cEOS-lab
 <https://arista.my.site.com/AristaCommunity/s/article/ceos-lab-topo>
 
+### Arista, AVD
+<https://avd.sh/en/stable/docs/installation/collection-installation.html>
+
 ### Containerlab, quick start
 <https://containerlab.dev/quickstart/>
 
@@ -40,51 +42,112 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 <https://www.youtube.com/watch?v=ngS80TzrSAw>
 
 
+# How to
+## Docker daemon, start
+sudo service docker start
 
-# Commands
+## Docker daemon, verify 
+sudo service docker status
+or
+docker run hello-world
 
-## Execute a process/command in a container
+## Docker daemon, stop
+sudo service docker stop
+
+
+## Docker, see images
 ```bash
-docker run <image> <command>
-# execute a command WHEN STARTING a container
-docker run <image> ansible-playbook -u playbook.yml
+docker images
+```
+
+## Docker, remove images
+<https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes>
+
+Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not tagged or associated with a container):
+```bash
+docker system prune
+```
+
+To additionally remove any stopped containers and all unused images (not just dangling images), add the -a flag to the command:
+```bash
+docker system prune -a
 ```
 
 ```bash
-docker exec <container> <command>
-# execute a command in RUNNING a container
-docker exec <container> cat /etc/hosts
+docker rmi <image> <image>
 ```
 
-## Attach and detach
+
+## Docker, see containers
 ```bash
-# run attached
-docker run <container>
-
-# run detached (d stands for detached). Container
-docker run -d <container>
-
-# if you want to attach to a running container
-docker attach <container_name>
+docker ps
+docker container ls
+docker container ls -a
 ```
 
-## run command in a running container
+## Docker, see cpu/memory consumption
 ```bash
-docker exec <container> <command>
-docker exec d88cba4d610c cat /etc/*release*
+docker stats
 ```
 
-## inspect container
+## Docker, start container
 ```bash
-docker inspect blissful_hopper
+docker pw
 ```
 
-## container logs
+## Docker, stop container
 ```bash
-docker logs blissful_hopper
+docker stop <container__id/name?>
 ```
 
-## Image history
+## Docker, connect to an Arista running image
 ```bash
-docker history <image_name>
+docker exec -it ceos1 Cli
 ```
+
+## Ansible, get information/documentation
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-doc -l
+```
+
+## Ansible, get help 
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
+```
+
+## Ansible, execute a one-off command
+```bash
+ansible <hosts> -a <command>
+ansible <hosts> -m <module>
+ansible target1 -m ping
+```
+
+## Ansible, execute a playbook
+```bash
+ansible-playbook <playbook_name>
+ansible-playbook playbook_server.yaml
+ansible-playbook <playbook_name> -i <inventory_file>
+```
+
+## Arista EOS, change from `bash` to `cli`
+If you have arrived to `bash` from the `cli`, then just type `exit`.
+If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
+
+## Arista, enable LLDP in Docker
+<https://youtu.be/RgbWDw__xqM?t=277>
+
+## WSL stop server
+Open PowerShell as an administrator
+```bash
+# see distributions and their status
+wsl -l -v
+# stop all distributions
+wsl --shutdown
+# terminate a specific distribution
+wsl -t Ubuntu
+# start
+wsl -d Ubuntu
+# Verify the distribution has started
+wsl -l -v
+```
+<https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows>

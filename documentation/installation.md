@@ -1,12 +1,33 @@
 # About this file
-Installation instructions for the repository.
+Installation instructions.
 
 # Requisites
-* none
+* A Windows or Linux operating system to serve as the host server for Docker.
 
-# Installation
+# Install
+## About
+In this section, how to run Arista cEOS labs:
+* In a WSL instance
+* Ubuntu as the OS
+* Docker installed from the Docker apt repository (not from the Ubuntu repository) 
+* Ansible installed as Docker image over in an `alpine` image.
+* containerlab installed as a Docker image.
+* Arista EOS with the cEOS images.
+* Arista containers running in containerlab.
 
-## Create a base directory
+
+## Install WSL, ubuntu
+
+## Base directory
+Create a base directory or clone the Git repository.
+
+### Clone this repository
+When you clone a Git repository it will be placed in a directory named as the repository itself in the directory you are it. Hence, place yourself where you want this new repository to be cloned to and
+```bash
+git clone <url_of_repository>
+```
+
+### Create base directory
 In your local computer, create a directory. This will be the root of the project.
 ```bash
 mkdir ./<directory_name>
@@ -17,6 +38,93 @@ Change directory to the newly created directory
 ```bash
 mkdir cd ./<base>
 ```
+
+## Install Docker Engine
+<https://docs.docker.com/engine/install/ubuntu/>
+Install from Docker apt
+`docker-ce` is needed because it is a requirement of containerlab
+
+verify
+```bash
+sudo service docker start
+sudo docker run hello-world
+```
+
+### Ansible image
+Build with `Dockerfile`. You will find it in the `dockerfiles` directory.
+
+## Arista images, get them
+Download cEOS from Arista.
+Download also too the README file
+Transfer to the Linux instance.
+
+## Import the Arista image
+Convention for naming the Arista cEOS images: `arista/ceos:<version_number>`.
+```bash
+# import the downloaded cEOS-lab.tar.xz image
+docker import cEOS-lab.tar.xz arista/ceos:4.29.3M
+```
+
+## install containerlab
+<https://containerlab.dev/install/>
+BUT do so as a container
+<https://containerlab.dev/install/#container>
+
+Launch containerlab
+```bash
+docker run --rm -it --privileged \
+    --name container_containerlab \
+    --network host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/netns:/var/run/netns \
+    -v /etc/hosts:/etc/hosts \
+    -v /var/lib/docker/containers:/var/lib/docker/containers \
+    --pid="host" \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    ghcr.io/srl-labs/clab bash
+```
+
+```bash
+docker run --rm -it --privileged \
+    --network host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/netns:/var/run/netns \
+    -v /etc/hosts:/etc/hosts \
+    -v /var/lib/docker/containers:/var/lib/docker/containers \
+    --pid="host" \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    ghcr.io/srl-labs/clab bash
+```
+
+
+# Uninstall
+## Backup containerlab topology files
+## Delete all the containers
+## Delete the containerlab image
+## Delete the Ansible image
+## Delete the Arista images
+## Uninstall Docker Engine
+<https://docs.docker.com/engine/install/ubuntu/>
+
+## Remove Docker
+
+## Delete the base directory
+Arista AVD collection installation
+```bash
+sudo rm -r ./<directory_name>
+```
+
+# Archive, Installation
+## About
+In this section, how to run Arista cEOS labs:
+* In a WSL instance
+* Ubuntu as the OS
+* Docker installed from the Ubuntu apt repository (not from the Docker repository) 
+* Ansible installed as Docker image over in an `alpine` image.
+* Arista EOS with the cEOS images.
+* Arista containers orchestrated with `docker-compose`.
 
 ## Docker
 ### Install docker
@@ -79,163 +187,3 @@ docker import cEOS-lab.tar.xz ceosimage:4.29.3M
 ### Create containers of Aristas
 With compose
 
-
-
-# References
-## Arista
-<https://avd.sh/en/stable/docs/installation/collection-installation.html>
-
-# Uninstall
-## Remove Docker
-
-## Delete the base directory
-Arista AVD collection installation
-```bash
-sudo rm -r ./<directory_name>
-```
-
-# sandbox, install
-## install WSL, ubuntu
-
-## install docker
-<https://docs.docker.com/engine/install/ubuntu/>
-install from apt
-`docker-ce` is needed because it is a requirement of containerlab
-
-verify
-```bash
-sudo service docker start
-sudo docker run hello-world
-```
-
-## install containerlab
-<https://containerlab.dev/install/>
-BUT do so as a container
-<https://containerlab.dev/install/#container>
-
-Launch containerlab
-```bash
-docker run --rm -it --privileged \
-    --name container_containerlab \
-    --network host \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /var/run/netns:/var/run/netns \
-    -v /etc/hosts:/etc/hosts \
-    -v /var/lib/docker/containers:/var/lib/docker/containers \
-    --pid="host" \
-    -v $(pwd):$(pwd) \
-    -w $(pwd) \
-    ghcr.io/srl-labs/clab bash
-```
-
-```bash
-docker run --rm -it --privileged \
-    --network host \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /var/run/netns:/var/run/netns \
-    -v /etc/hosts:/etc/hosts \
-    -v /var/lib/docker/containers:/var/lib/docker/containers \
-    --pid="host" \
-    -v $(pwd):$(pwd) \
-    -w $(pwd) \
-    ghcr.io/srl-labs/clab bash
-```
-
-# sandbox, operate
-## docker
-### start
-sudo service docker start
-### verify 
-sudo service docker status
-or
-docker run hello-world
-### stop
-sudo service docker stop
-
-
-# sandbox, uninstall
-## uninstall docker
-<https://docs.docker.com/engine/install/ubuntu/>
-
-# Archive
-## Create a conda environment
-Create the environment
-```bash
-conda create <conda_environment_name>
-```
-
-and activate it
-```bash
-conda activate <conda_environment_name>
-```
-
-Later on, to deactivate
-```bash
-conda deactivate
-```
-
-To see a list of all your environments, type:
-```bash
-conda info --envs
-```
-
-## Install pip
-Install 
-```bash
-conda install pip 
-```
-
-Verify  
-```bash
-conda list
-```
-
-## Delete the conda environment
-Create the environment
-```bash
-sudo rm -r ~/miniconda3/envs/<conda_environment_name>
-```
-
-## Virtualenv
-
-### Create a virtual environment for this project
-
-* Install `apt-get install python3-venv`, this is necessary to create virtual environments with Python3.
-
-```bash
-sudo apt-get install python3-venv
-```
-
-* Create a virtual environment. Then activate the virtual environment.
-
-```bash
-python3 -m venv </path/to/new/virtual/environment>
-source </path/to/new/virtual/environment>/bin/activate
-```
-
-I find it convenient to have the virtual environment files in the the root of the project. Also, ensure that those files are not tracked by git (add `*.venv` to `.gitignore`).
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### Clone the code
-
-```bash
-git clone <url>
-```
-
-### Install Python packages
-
-Upgrade `pip` in the virtual environment
-
-```bash
-pip install --upgrade pip
-```
-
-Install the Python packages
-
-```bash
-pip install -r requirements/base.txt
-```

@@ -1,31 +1,75 @@
 # About this file
-Operation instructions for the repository.
+Operation instructions.
 
-# Docker daemon
-## Start
-Start the docker daemon
+# Operate
+## Normal day
+This is what you do every day.
+
+### Verify Docker is running
 ```bash
-# https://askubuntu.com/questions/1375195/run-dockerd-as-a-background-on-wsl-ubuntu
-sudo dockerd > /dev/null 2>&1 & disown
-```
-
-## Verify
-Verify 
-```bash 
-ps aux | grep dockerd
-```
-
-```bash 
+sudo service docker status
+# or
 docker run hello-world
 ```
 
-## Stop
-Stop the docker daemon
+### Start Docker
 ```bash
-sudo start-stop-daemon -K -v --name dockerd
+sudo service docker start
+```
+and verify again
+
+### Verify the Docker images are available
+```bash
+docker images
+```
+Should display the Arista images (`arista/ceos:4.29.3M`) and the Containerlabs (`ghcr.io/srl-labs/clab`) images.
+
+### Go to the containerlabs directory
+```bash
+cd <containerlabs_directory>
 ```
 
-# Daily routine
+### Start containerlab
+This is done by creating a Docker container from the containerlab image.
+```bash
+docker run --rm -it --privileged \
+    --name container_containerlab \
+    --network host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/netns:/var/run/netns \
+    -v /etc/hosts:/etc/hosts \
+    -v /var/lib/docker/containers:/var/lib/docker/containers \
+    --pid="host" \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    ghcr.io/srl-labs/clab bash
+```
+You will see that the prompt has changed. 
+
+### Verify containerlab is running
+Either by:
+* Observing that the prompt has changed. 
+* `docker ps` does render a running container with the name tag you gave it at the moment of creating it. 
+
+### Deploy/launch a lab
+```bash
+containerlab deploy --topo <path_to_topology_file>
+```
+topology files must have the extension `*.clab.yml`
+
+### Connect to the nodes
+```bash
+docker exec -it <container_name> bash
+```
+
+### Destroy the lab lab
+```bash
+containerlab destroy --topo <path_to_topology_file>
+```
+
+
+
+# Archive, daily routine
 ## Start the `dockerd` daemon
 Starting the daemon directly does not seem to work (at least in an Ubuntu instance in WLS). I have found that what it works is this sequence. 
 1. Stop the `dockerd` daemon
@@ -86,137 +130,4 @@ docker exec ceos_basic_01_my_ans_1 ansible localhost -m ping -i ansible_root/inv
 ## Execut ansible playbook
 ```bash
 docker exec ceos_basic_01_my_ans_1 ansible-playbook <playbook_filename>
-```
-
-# How to
-## Docker, see images
-```bash
-docker images
-```
-
-## Docker, remove images
-<https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes>
-
-Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not tagged or associated with a container):
-```bash
-docker system prune
-```
-
-To additionally remove any stopped containers and all unused images (not just dangling images), add the -a flag to the command:
-```bash
-docker system prune -a
-```
-
-```bash
-docker rmi <image> <image>
-```
-
-
-## Docker, see containers
-```bash
-docker ps
-docker container ls
-docker container ls -a
-```
-
-## Docker, see cpu/memory consumption
-```bash
-docker stats
-```
-
-## Docker, start container
-```bash
-docker pw
-```
-
-## Docker, stop container
-```bash
-docker stop <container__id/name?>
-```
-
-## Docker, connect to an Arista running image
-```bash
-docker exec -it ceos1 Cli
-```
-
-## Ansible, get information/documentation
-```bash
-docker exec ceos_basic_01_my_ans_1 ansible-doc -l
-```
-
-## Ansible, get help 
-```bash
-docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
-```
-
-## Ansible, execute a one-off command
-```bash
-ansible <hosts> -a <command>
-ansible <hosts> -m <module>
-ansible target1 -m ping
-```
-
-## Ansible, execute a playbook
-```bash
-ansible-playbook <playbook_name>
-ansible-playbook playbook_server.yaml
-ansible-playbook <playbook_name> -i <inventory_file>
-```
-
-## Arista EOS, change from `bash` to `cli`
-If you have arrived to `bash` from the `cli`, then just type `exit`.
-If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
-
-## Arista, enable LLDP in Docker
-
-<https://youtu.be/RgbWDw__xqM?t=277>
-
-## WSL stop server
-Open PowerShell as an administrator
-```bash
-# see distributions and their status
-wsl -l -v
-# stop all distributions
-wsl --shutdown
-# terminate a specific distribution
-wsl -t Ubuntu
-# start
-wsl -d Ubuntu
-# Verify the distribution has started
-wsl -l -v
-```
-<https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows>
-
-
-# Archive
-## Conda environments
-
-### Activate the conda base environment automatically
-
-```bash
-# activate every time a terminal is opened
-conda config --set auto_activate_base true
-# do not activate every time a terminal is opened
-conda config --set auto_activate_base false
-```
-
-
-### See all the conda environments
-```bash
-conda info envs
-```
-
-## Conda packages
-### Add
-```bash
-conda install <package_name>
-```
-### List
-```bash
-conda list
-```
-
-### Remove
-```bash
-conda remove <package_name>
 ```
