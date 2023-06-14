@@ -139,6 +139,15 @@ If you have arrived to `bash` direclty, then `Cli` (the first letter is capital)
 ## Arista, enable LLDP in Docker
 <https://youtu.be/RgbWDw__xqM?t=277>
 
+## Git, change repository
+Add files using the command line or push an existing Git repository with the following command:
+```bash
+cd existing_repo
+git remote add origin https://git.heanet.ie/dlete/wk_sand.git
+git branch -M main
+git push -uf origin main
+```
+
 ## WSL stop server
 Open PowerShell as an administrator
 ```bash
