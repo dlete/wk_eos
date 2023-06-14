@@ -8,7 +8,7 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 ## What is servicenow?
 
 
-# References
+# Reference sites, articles, etc.
 ## Courses
 ### UDEMY, Docker for the Absolute Beginner - Hands On - DevOps
 <https://heanet.udemy.com/course/learn-docker/>
