@@ -1,12 +1,5 @@
 # About this file
-Installation instructions.
-
-# Requisites
-* A Windows or Linux operating system to serve as the host server for Docker.
-
-# Install
-## About
-In this section, how to run Arista cEOS labs:
+Installation instructions to run Arista cEOS labs:
 * In a WSL instance
 * Ubuntu as the OS
 * Docker installed from the Docker apt repository (not from the Ubuntu repository) 
@@ -15,7 +8,10 @@ In this section, how to run Arista cEOS labs:
 * Arista EOS with the cEOS images.
 * Arista containers running in containerlab.
 
+# Requisites
+* A Windows or Linux operating system to serve as the host server for Docker.
 
+# Install
 ## Install WSL, ubuntu
 
 ## Base directory
