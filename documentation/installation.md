@@ -46,8 +46,15 @@ sudo service docker start
 sudo docker run hello-world
 ```
 
-### Ansible image
+## Ansible image
 Build with `Dockerfile`. You will find it in the `dockerfiles` directory.
+
+```bash
+docker build --tag <image_name:tag> --file <path_to_dockerfile_file> <PATH>
+docker build --tag first-dockerfile --file Dockerfile1 .
+docker build --tag dlete_ansible:3.16 --file Dockerfile1 .
+```
+Reference: [docker build](https://docs.docker.com/engine/reference/commandline/build/)
 
 ## Arista images, get them
 Download cEOS from Arista.

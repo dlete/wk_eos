@@ -7,6 +7,9 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 
 ## What is servicenow?
 
+## What is the difference between Ansible `community` and `ansible-core`?
+<https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html>
+
 
 # Reference sites, articles, etc.
 ## Courses
@@ -14,6 +17,10 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 <https://heanet.udemy.com/course/learn-docker/>
 
 ## Articles
+
+### Blog, Docker - A Beginner’s guide to understanding Dockerfile with a sample project
+<https://blog.devgenius.io/docker-a-beginners-guide-to-understanding-dockerfile-with-a-sample-project-f1a54eeedb0f>
+
 ### Dzone
 <https://dzone.com/articles/ci-dockerizing-an-ansible-playbook-and-deploying-t>
 
@@ -41,8 +48,23 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 ### Containerlab with cEOS
 <https://containerlab.dev/manual/kinds/ceos/>
 
-### How to setup Arista cEOS Docker Image
+### YouTube, how to setup Arista cEOS Docker Image
 <https://www.youtube.com/watch?v=ngS80TzrSAw>
+
+### Blog, Build Containerlab topology from AVD
+<Build Containerlab topology from AVD>
+
+
+## Warehouse
+Many diverse pointers, not necessarily readily to use, but of some use.
+Github, ksator/arista_ceos_demo
+<https://github.com/ksator/arista_ceos_demo>
+
+Github, arista-netdevops-community/ceos_lab_demo
+<https://github.com/arista-netdevops-community/ceos_lab_demo>
+
+Privileged In Docker Compose With Code Examples
+<https://linuxhint.com/privileged-in-docker-compose-with-code-examples/>
 
 
 # How to
@@ -61,6 +83,12 @@ sudo service docker stop
 ## Docker, see images
 ```bash
 docker images
+```
+
+## Docker, inspect image
+See the details of the image, how has it been built.
+```bash
+docker image inspect <image_name>
 ```
 
 ## Docker, remove images
@@ -184,6 +212,18 @@ git remote add origin git@git.heanet.ie:dlete/wk_eos.git
 git push -u origin --all
 git push -u origin --tags
 ```
+## Python packages, see available versions
+Find them in [PyPi](https://pypi)
+
+ANSIBLE_CORE
+<https://pypi.org/project/ansible-core/>
+
+ANSIBLE>
+<https://pypi.org/project/ansible/
+
+Ansible lint>
+<https://pypi.org/project/ansible-lint/>
+
 
 ## WSL stop server
 Open PowerShell as an administrator
@@ -200,3 +240,11 @@ wsl -d Ubuntu
 wsl -l -v
 ```
 <https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows>
+
+
+# To do
+## Build image with `alpine` or with `Python`
+Analise both options (e.g. no Cli in Python).
+
+
+[def]: ttps://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.htm
