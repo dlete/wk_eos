@@ -6,7 +6,7 @@
 # To execute it:
 # Build the image
 #docker build --tag <image_name:tag> --file <path_to_dockerfile_file> <PATH>
-#docker build --tag dlete/ansible/sand:2.15.0 --file dl_sand_ii .
+#docker build --tag dlete/ansible/core:2.15.0 --file dl_alpine-3.17_ansible_core-2.15.0 .
 #
 # Verify creation by listing the images
 #docker images
@@ -45,10 +45,6 @@ FROM alpine:${ALPINE_VERSION}
 # BUG!, Has to be repeated after the FROM statement for the ENV to be 
 # able to pick it up
 ARG ALPINE_VERSION=3.17
-# Arista AVD mentions Ansible core up to 2.14.x, I assume this is due to
-# the Arista page being behind the Ansible versions, not tested with the
-# latest Ansible version yet.
-# https://avd.sh/en/stable/docs/installation/collection-installation.html
 ARG ANSIBLE_CORE_VERSION=2.15.0
 #ARG ANSIBLE_COMMUNITY_VERSION=8.0.0
 ARG ANSIBLE_LINT=6.17.1
@@ -113,15 +109,6 @@ RUN apk --no-cache add \
     pip3 install mitogen jmespath && \
     pip3 install --upgrade pywinrm && \
     apk del build-dependencies && \
-    # Ansible collections
-    # https://avd.sh/en/stable/docs/installation/collection-installation.html
-    # remember to add the '&&' and the continuation at the end!!!
-    # will install the Arista AVD in the  ~/.ansible/collections directory,
-    # in this case in  /root/.ansible/collections directory,
-    # if you want to install in a different path, then "-p /<path>"
-    # https://docs.ansible.com/ansible/latest/collections_guide/collections_installing.html#installing-collections-with-ansible-galaxy
-    ansible-galaxy collection install arista.avd && \
-    # tidy up
     rm -rf /var/cache/apk/* && \
     rm -rf /root/.cache/pip && \
     rm -rf /root/.cargo

@@ -5,10 +5,10 @@ topology:
   nodes:
     ceos1:
       kind: ceos
-      image: aristaceos:4.29.3M
+      image: arista/ceos:4.29.3M
     ceos2:
       kind: ceos
-      image: aristaceos:4.29.3M
+      image: arista/ceos:4.29.3M
 
   links:
     - endpoints: ["ceos1:eth1", "ceos2:eth1"]

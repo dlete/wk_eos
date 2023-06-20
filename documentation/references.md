@@ -1,7 +1,7 @@
 # Questions
 
 ## Why can't set specific version of ansible in Dockerfile?
-A. Because you were using the parameter `ENV` incorrectly. You were using `ENV VERSION 15.1` and should have been writing `ENV VERSION=15.1`. You were missing the `=` symbol.
+A. Because the ARG where placed before the FROM command. The ARG have to be after the FROM command. This seems to be a bug.
 
 Q. Why have images with no names? and why can't be deleted saying they have child images?
 
@@ -9,6 +9,9 @@ Q. Why have images with no names? and why can't be deleted saying they have chil
 
 ## What is the difference between Ansible `community` and `ansible-core`?
 <https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html>
+
+## Arista, is there a Docker image for AVD?
+
 
 
 # Reference sites, articles, etc.
@@ -68,6 +71,9 @@ Privileged In Docker Compose With Code Examples
 
 
 # How to
+## Alpine, list packages
+`apk list -i`
+
 ## Docker daemon, start
 sudo service docker start
 

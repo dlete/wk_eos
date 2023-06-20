@@ -6,19 +6,24 @@
 # To execute it:
 # Build the image
 #docker build --tag <image_name:tag> --file <path_to_dockerfile_file> <PATH>
-#docker build --tag dlete/ansible:8.0.0 --file Dockerfile1 .
+#docker build --tag dlete/ansible/community:8.0.0 --file dl_alpine-3.17_ansible_community-8.0.0 .
 #
 # Verify creation by listing the images
 #docker images
 #
 # Create and run a container
 # detached mode
-#docker run -it --detach --name <container_name> <image_name>  
+#docker run --detach -it --name <container_name> <image_name> bash
 # detach and remove the container once it exits
 #docker run --interactive --tty --rm --detach \
-# --name <container_name> <image_name>
+# --name <container_name> <image_name> bash
 # attach to running container, and run the Bash shell on it
-#docker exec -it <container_name> bash
+# docker exec -it <container_name> bash
+# docker exec --interactive --tty <container_name> bash
+#
+# interactive mode, remove the container once exiting
+#docker run --interactive --tty --rm --name <container_name> <image_name> bash
+#
 # map the host directory "$(pwd)/ansible_root" (in your PC), 
 # to the directory "ansible" in the image"
 #docker run --rm -it -v $(pwd)/ansible_root:/ansible <image_name> bash
@@ -40,22 +45,22 @@ FROM alpine:${ALPINE_VERSION}
 # BUG!, Has to be repeated after the FROM statement for the ENV to be 
 # able to pick it up
 ARG ALPINE_VERSION=3.17
-ARG ANSIBLE_CORE_VERSION=2.15.0
+#ARG ANSIBLE_CORE_VERSION=2.15.0
 ARG ANSIBLE_COMMUNITY_VERSION=8.0.0
 ARG ANSIBLE_LINT=6.17.1
 ARG DOCKERFILE_MAINTAINER="daniel.lete@heanet.ie"
-ARG DOCKERFILE_DATE="29 May 2023"
+ARG DOCKERFILE_DATE="20 June 2023"
 
 
 # ENV sets the environment variables for subsequent instructions.
 ENV ALPINE_VERSION ${ALPINE_VERSION}
-ENV ANSIBLE_CORE_VERSION ${ANSIBLE_CORE_VERSION}
+#ENV ANSIBLE_CORE_VERSION ${ANSIBLE_CORE_VERSION}
 ENV ANSIBLE_COMMUNITY_VERSION ${ANSIBLE_COMMUNITY_VERSION}
 ENV ANSIBLE_LINT ${ANSIBLE_LINT}
 ENV DOCKERFILE_MAINTAINERMAINTAINER=${DOCKERFILE_MAINTAINER}
 ENV DOCKERFILE_VERSION=${DOCKERFILE_DATE}
 ENV DOCKERFILE_DESCRIPTION="Custom Docker image with with \
-    Alpine ${ALPINE_VERSION} and Ansible ${ANSIBLE_COMMUNITY_VERSION}"
+    Alpine ${ALPINE_VERSION} and Ansible Community ${ANSIBLE_COMMUNITY_VERSION}"
 
 
 # LABEL you will see the labels in the image and in the containers
@@ -65,8 +70,7 @@ LABEL version=${DOCKERFILE_DATE}
 LABEL description=${DOCKERFILE_DESCRIPTION}
 LABEL DOCKERFILE_MAINTAINERMAINTAINER=${DOCKERFILE_MAINTAINER}
 LABEL DOCKERFILE_VERSION=${DOCKERFILE_DATE}
-LABEL DOCKERFILE_DESCRIPTION="Custom Docker image with with \
-    Alpine ${ALPINE_VERSION} and Ansible ${ANSIBLE_COMMUNITY_VERSION}"
+LABEL DOCKERFILE_DESCRIPTION=${DOCKERFILE_DESCRIPTION}
 
 
 ### OS PACKAGES
@@ -84,6 +88,8 @@ RUN apk --no-cache add \
         #with-an-alpine-based-docker-image
         # docker run --rm -it <image_name> bash
         bash \
+        # to be able to use 'locate'
+        #findutils-locate \
         git && \
     apk --no-cache add --virtual build-dependencies \
         python3-dev \
@@ -97,7 +103,7 @@ RUN apk --no-cache add \
     ### PYTHON PACKAGES LAYER
     pip3 install --upgrade pip wheel && \
     pip3 install --upgrade cryptography cffi && \
-    pip3 install ansible-core==${ANSIBLE_CORE_VERSION} && \
+    #pip3 install ansible-core==${ANSIBLE_CORE_VERSION} && \
     pip3 install ansible==${ANSIBLE_COMMUNITY_VERSION} && \
     pip3 install --ignore-installed ansible-lint==${ANSIBLE_LINT} && \
     pip3 install mitogen jmespath && \

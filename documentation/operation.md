@@ -56,10 +56,13 @@ Either by:
 containerlab deploy --topo <path_to_topology_file>
 ```
 topology files must have the extension `*.clab.yml`
+It will not bring the lab immediately. It may take about 1 minute (or more, depending on the number of containers).
 
 ### Connect to the nodes
 ```bash
 docker exec -it <container_name> bash
+# example
+# docker exec -it clab-my_srlceos01-ceos1 bash
 ```
 
 ### Destroy the lab lab
