@@ -52,6 +52,8 @@ Either by:
 * `docker ps` does render a running container with the name tag you gave it at the moment of creating it. 
 
 ### Deploy/launch a lab
+From within the containerlab docker
+
 ```bash
 containerlab deploy --topo <path_to_topology_file>
 ```
@@ -63,6 +65,11 @@ It will not bring the lab immediately. It may take about 1 minute (or more, depe
 docker exec -it <container_name> bash
 # example
 # docker exec -it clab-my_srlceos01-ceos1 bash
+```
+
+The above will put you in bash shell. To enter CLI
+```bash
+/usr/bin/FastCli
 ```
 
 ### Destroy the lab lab

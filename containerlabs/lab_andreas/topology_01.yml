@@ -1,0 +1,14 @@
+# https://blog.andreasm.io/2024/08/22/arista-cloudvision-and-avd-using-containerlab/
+name: spine-leaf-borderleaf
+
+mgmt:
+  network: custom_mgmt                # management network name
+  ipv4-subnet: 192.168.20.0/24       # ipv4 range
+
+topology:
+  nodes:
+    node-2:
+      kind: arista_ceos
+      image: arista/ceos:4.29.3M
+      startup-config: node2-startup-config.cfg
+      mgmt-ipv4: 192.168.20.2
