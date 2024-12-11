@@ -1,0 +1,8 @@
+all:
+  children:
+    arista_ceos:
+      hosts:
+        clab-spine-leaf-borderleaf-node-2:
+          ansible_host: 172.20.20.20
+        clab-spine-leaf-borderleaf-node-3:
+          ansible_host: 172.20.20.30

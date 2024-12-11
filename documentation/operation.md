@@ -61,6 +61,8 @@ topology files must have the extension `*.clab.yml`
 It will not bring the lab immediately. It may take about 1 minute (or more, depending on the number of containers).
 
 ### Connect to the nodes
+
+#### By attaching to the docker image
 ```bash
 docker exec -it <container_name> bash
 # example
