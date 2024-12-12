@@ -1,0 +1,21 @@
+=> => naming to docker.io/library/avd-quickstart-temp-image                                                                          0.0s
+
+ 1 warning found (use docker --debug to expand):
+ - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "ARISTA_TOKEN") (line 14)
+[+] Building 0.8s (6/6) FINISHED                                                                                            docker:default
+ => [internal] load build definition from updateUID.Dockerfile                                                                        0.0s
+ => => transferring dockerfile: 1.52kB                                                                                                0.0s
+ => WARN: InvalidDefaultArgInFrom: Default value for ARG $BASE_IMAGE results in empty or invalid base image name (line 4)             0.0s
+ => [internal] load metadata for docker.io/library/avd-quickstart-temp-image:latest                                                   0.0s
+ => [internal] load .dockerignore                                                                                                     0.0s
+ => => transferring context: 173B                                                                                                     0.0s
+ => [1/2] FROM docker.io/library/avd-quickstart-temp-image:latest                                                                     0.2s
+ => [2/2] RUN eval $(sed -n "s/avd:[^:]*:\([^:]*\):\([^:]*\):[^:]*:\([^:]*\).*/OLD_UID=\1;OLD_GID=\2;HOME_FOLDER=\3/p" /etc/passwd);  0.4s
+ => exporting to image                                                                                                                0.1s
+ => => exporting layers                                                                                                               0.0s
+ => => writing image sha256:fac76ba8792c8c7d27fa7a53bf48f4283950704a6d2ef489a4c392247fb7a04c                                          0.0s
+ => => naming to docker.io/library/avd-quickstart:latest                                                                              0.0s
+
+ 1 warning found (use docker --debug to expand):
+ - InvalidDefaultArgInFrom: Default value for ARG $BASE_IMAGE results in empty or invalid base image name (line 4)
+dlete@LWH-3Q2L1Z2:/workspace/wk_eos/containerlabs/anc_avd-quickstart-containerlab$ 
