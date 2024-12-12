@@ -142,36 +142,7 @@ docker stop <container__id/name?>
 docker exec -it ceos1 Cli
 ```
 
-## Ansible, get information/documentation
-```bash
-docker exec ceos_basic_01_my_ans_1 ansible-doc -l
-```
 
-## Ansible, get help 
-```bash
-docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
-```
-
-## Ansible, execute a one-off command
-```bash
-ansible <hosts> -a <command>
-ansible <hosts> -m <module>
-ansible target1 -m ping
-```
-
-## Ansible, execute a playbook
-```bash
-ansible-playbook <playbook_name>
-ansible-playbook playbook_server.yaml
-ansible-playbook <playbook_name> -i <inventory_file>
-```
-
-## Arista EOS, change from `bash` to `cli`
-If you have arrived to `bash` from the `cli`, then just type `exit`.
-If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
-
-## Arista, enable LLDP in Docker
-<https://youtu.be/RgbWDw__xqM?t=277>
 
 ## Git, change repository
 Add files using the command line or push an existing Git repository with the following command:
@@ -246,6 +217,45 @@ wsl -d Ubuntu
 wsl -l -v
 ```
 <https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows>
+
+# Ansible
+## Verify inventory
+```bash
+ansible-inventory -i inventory.ini --list
+```
+
+
+## Ansible, get information/documentation
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-doc -l
+```
+
+## Ansible, get help 
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
+```
+
+## Ansible, execute a one-off command
+```bash
+ansible <hosts> -a <command>
+ansible <hosts> -m <module>
+ansible target1 -m ping
+```
+
+## Ansible, execute a playbook
+```bash
+ansible-playbook <playbook_name>
+ansible-playbook playbook_server.yaml
+ansible-playbook <playbook_name> -i <inventory_file>
+```
+
+# Arista
+## Arista EOS, change from `bash` to `cli`
+If you have arrived to `bash` from the `cli`, then just type `exit`.
+If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
+
+## Arista, enable LLDP in Docker
+<https://youtu.be/RgbWDw__xqM?t=277>
 
 
 # To do

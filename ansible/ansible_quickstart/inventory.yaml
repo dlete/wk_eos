@@ -1,0 +1,9 @@
+myhosts:
+  hosts:
+    my_node_01:
+      ansible_host: 172.20.20.20
+    my_node_02:
+      ansible_host: 172.20.20.30
+  vars:
+    ansible_user: robot
+    ansible_password: aladdin
