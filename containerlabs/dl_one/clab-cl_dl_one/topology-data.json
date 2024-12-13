@@ -1,0 +1,94 @@
+{
+  "name": "cl_dl_one",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "custom_mgmt",
+        "bridge": "br-3e53b4c7b95a",
+        "ipv4-subnet": "192.168.123.0/24",
+        "ipv4-gw": "192.168.123.1",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "leaf1": {
+      "index": "0",
+      "shortname": "leaf1",
+      "longname": "clab-cl_dl_one-leaf1",
+      "fqdn": "leaf1.cl_dl_one.io",
+      "group": "",
+      "labdir": "/workspace/wk_eos/containerlabs/dl_one/clab-cl_dl_one/leaf1",
+      "kind": "ceos",
+      "image": "arista/ceos:4.29.3M",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "192.168.123.21",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "00:1c:73:25:e1:64",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-3e53b4c7b95a",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/workspace/wk_eos/containerlabs/dl_one/clab-cl_dl_one/leaf1",
+        "clab-node-name": "leaf1",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/workspace/wk_eos/containerlabs/dl_one/clab/topology.yml",
+        "containerlab": "cl_dl_one"
+      },
+      "port-bindings": [
+      ]
+    },
+    "spine1": {
+      "index": "1",
+      "shortname": "spine1",
+      "longname": "clab-cl_dl_one-spine1",
+      "fqdn": "spine1.cl_dl_one.io",
+      "group": "",
+      "labdir": "/workspace/wk_eos/containerlabs/dl_one/clab-cl_dl_one/spine1",
+      "kind": "ceos",
+      "image": "arista/ceos:4.29.3M",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "192.168.123.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "00:1c:73:4e:10:59",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-3e53b4c7b95a",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/workspace/wk_eos/containerlabs/dl_one/clab-cl_dl_one/spine1",
+        "clab-node-name": "spine1",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/workspace/wk_eos/containerlabs/dl_one/clab/topology.yml",
+        "containerlab": "cl_dl_one"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "spine1",
+        "interface": "eth1_1",
+        "mac": "aa:c1:ab:6d:0b:97",
+        "peer": "z"
+      },
+      "z": {
+        "node": "leaf1",
+        "interface": "eth49_1",
+        "mac": "aa:c1:ab:fc:15:9d",
+        "peer": "a"
+      }
+    }
+  ]
+}

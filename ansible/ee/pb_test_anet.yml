@@ -1,0 +1,12 @@
+- name: Run commands on remote LAB devices
+  hosts: myhosts
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: show version
+      eos_command:
+        commands:
+          - enable
+          - show version
+

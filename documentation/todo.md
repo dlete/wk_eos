@@ -1,4 +1,10 @@
 # LIst of things to do
+Start containerlabs AND ansible with one single dockercompose?
+Modify ansible image not to create any directories in the image and to map pwd to pwd of the host
+how to give a container a hostname
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-to-containers
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#adding-ansible-command-shell-completion
+
 
 How to attach to a running container
 
@@ -18,6 +24,22 @@ docker run --network clab --rm -it dlete/ansible:8.0.0 bash
 
 WORKS
 docker run --network clab --ip 172.20.20.10 --rm -it dlete/ansible:8.0.0 bash
+
+WORKS
+```bash
+docker run --rm -it \
+    --privileged \                      # puts you in root
+    --name my_test_ansible_host \
+    --network clab --ip 172.20.20.10 \
+    -v $(pwd):$(pwd) \
+    dlete/ansible:8.0.0 bash
+
+docker run --rm -it \
+    --name my_test_ansible_host \
+    --network clab --ip 172.20.20.10 \
+    -v $(pwd):$(pwd) \
+    dlete/ansible:8.0.0 bash
+```
 
 does not work
 ```bash
@@ -57,6 +79,3 @@ start ansible
 ```bash
 docker run --network clab --ip 172.20.20.10 --rm -it dlete/ansible:8.0.0 bash
 ```
-
-deploy 
-containerlab deploy -t topology_02.yml 
