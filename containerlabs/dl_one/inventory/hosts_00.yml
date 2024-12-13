@@ -1,0 +1,21 @@
+---
+all:
+  vars:
+    # The generated inventory is assumed to be used from the clab host.
+    # Hence no http proxy should be used. Therefore we make sure the http
+    # module does not attempt using any global http proxy.
+    ansible_httpapi_use_proxy: false
+  children:
+    LAB:
+      children:
+        FABRIC:
+          vars:
+            # ansible_connection: set ansible_connection variable if required
+            ansible_user: robot
+            ansible_password: aladdin
+            ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+          children:
+            SPINES:
+              hosts:
+                clab-cl_dl_one-spine1:
+                  ansible_host: 192.168.123.11

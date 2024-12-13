@@ -74,6 +74,7 @@ Privileged In Docker Compose With Code Examples
 ## Alpine, list packages
 `apk list -i`
 
+# Docker
 ## Docker daemon, start
 sudo service docker start
 
@@ -137,13 +138,18 @@ docker pw
 docker stop <container__id/name?>
 ```
 
-## Docker, connect to an Arista running image
+## Attach/connect to a running container
+```shell
+docker exec -it <container_name> bash
+```
+
+## Attach/connect to an Arista running image
 ```bash
 docker exec -it ceos1 Cli
 ```
 
 
-
+# Git
 ## Git, change repository
 Add files using the command line or push an existing Git repository with the following command:
 ```bash

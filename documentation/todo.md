@@ -5,8 +5,15 @@ how to give a container a hostname
 https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-to-containers
 https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#adding-ansible-command-shell-completion
 
+investigate Execution Environments
+https://docs.ansible.com/ansible/latest/getting_started_ee/index.html#getting-started-ee-index
 
-How to attach to a running container
+Copy ssh keys to nodes
+https://docs.ansible.com/ansible/latest/collections/ansible/netcommon/net_put_module.html#ansible-collections-ansible-netcommon-net-put-module
+https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix
+
+install arista.avd
+arista-galaxy collection arista.avd install
 
 How to stop a container
 docker stop <container>
