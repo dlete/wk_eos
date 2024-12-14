@@ -1,0 +1,5 @@
+# eAPI connectivity is via HTTPS (as opposed to CLI via SSH)
+# https://avd.arista.com/5.1/docs/installation/collection-installation.html
+# and
+# https://avd.arista.com/5.1/docs/getting-started/intro-to-ansible-and-avd.html
+ansible_connection: ansible.netcommon.httpapi

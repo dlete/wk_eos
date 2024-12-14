@@ -71,10 +71,60 @@ Privileged In Docker Compose With Code Examples
 
 
 # How to
+
+# Ansible
+## Ansible configuration, ansible.cfg
+https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+
+## Ansible host key checking
+https://www.geeksforgeeks.org/disabling-host-key-checking-in-ansible/
+https://stackoverflow.com/questions/23074412/how-to-set-host-key-checking-false-in-ansible-inventory-file
+
+
+## Verify inventory
+```bash
+ansible-inventory -i inventory.ini --list
+```
+
+
+## Ansible, get information/documentation
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-doc -l
+```
+
+## Ansible, get help 
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
+```
+
+## Ansible, execute a one-off command
+```bash
+ansible <hosts> -a <command>
+ansible <hosts> -m <module>
+ansible target1 -m ping
+```
+
+## Ansible, execute a playbook
+```bash
+ansible-playbook <playbook_name>
+ansible-playbook playbook_server.yaml
+ansible-playbook <playbook_name> -i <inventory_file>
+```
+
+# Arista
+## Arista EOS, change from `bash` to `cli`
+If you have arrived to `bash` from the `cli`, then just type `exit`.
+If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
+
+## Arista, enable LLDP in Docker
+<https://youtu.be/RgbWDw__xqM?t=277>
+
+
+
+# Docker
 ## Alpine, list packages
 `apk list -i`
 
-# Docker
 ## Docker daemon, start
 sudo service docker start
 
@@ -224,44 +274,6 @@ wsl -l -v
 ```
 <https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows>
 
-# Ansible
-## Verify inventory
-```bash
-ansible-inventory -i inventory.ini --list
-```
-
-
-## Ansible, get information/documentation
-```bash
-docker exec ceos_basic_01_my_ans_1 ansible-doc -l
-```
-
-## Ansible, get help 
-```bash
-docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
-```
-
-## Ansible, execute a one-off command
-```bash
-ansible <hosts> -a <command>
-ansible <hosts> -m <module>
-ansible target1 -m ping
-```
-
-## Ansible, execute a playbook
-```bash
-ansible-playbook <playbook_name>
-ansible-playbook playbook_server.yaml
-ansible-playbook <playbook_name> -i <inventory_file>
-```
-
-# Arista
-## Arista EOS, change from `bash` to `cli`
-If you have arrived to `bash` from the `cli`, then just type `exit`.
-If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
-
-## Arista, enable LLDP in Docker
-<https://youtu.be/RgbWDw__xqM?t=277>
 
 
 # To do

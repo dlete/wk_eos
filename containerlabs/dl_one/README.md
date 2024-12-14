@@ -54,12 +54,6 @@ boot -> boots with the ocnfiguration in startup
 
 
 # Troubleshoot
-## Ansible configuration, ansible.cfg
-https://docs.ansible.com/ansible/latest/reference_appendices/config.html
-
-## Ansible host key checking
-https://www.geeksforgeeks.org/disabling-host-key-checking-in-ansible/
-https://stackoverflow.com/questions/23074412/how-to-set-host-key-checking-false-in-ansible-inventory-file
 
 ## BGP Setsockopt 
 https://arista.my.site.com/AristaCommunity/s/article/Troubleshooting-cEOS-lab-on-WSL2

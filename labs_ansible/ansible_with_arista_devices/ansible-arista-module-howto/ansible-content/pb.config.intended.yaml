@@ -1,0 +1,20 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: false
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: diff the running config against a master config
+      eos_config:
+        provider: "{{arista_credentials}}"
+        diff_against: intended
+        intended_config: "{{ lookup('file', 'inputs/{{inventory_hostname}}-master.cfg') }}"
+
+    - name: Load a config in an intended way
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: "{{ lookup('file', 'inputs/{{inventory_hostname}}-master.cfg') }}"
+        replace: 'config'
