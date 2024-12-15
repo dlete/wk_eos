@@ -22,6 +22,9 @@ docker run --rm -it --privileged \
 sudo containerlab deploy -t <topology_file>
 ```
 
+from within the .venv of the host
+ansible-playbook playbook/ping.yml
+
 open as many terminals as you want, and connect to the container
 ```bash
 # containerlabs/ansible

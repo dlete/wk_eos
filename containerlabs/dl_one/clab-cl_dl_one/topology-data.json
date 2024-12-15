@@ -6,7 +6,7 @@
       "prefix": "clab",
       "mgmt": {
         "network": "custom_mgmt",
-        "bridge": "br-0d0d48b72eb4",
+        "bridge": "br-bf597558796a",
         "ipv4-subnet": "192.168.123.0/24",
         "ipv4-gw": "192.168.123.1",
         "external-access": true
@@ -29,9 +29,9 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "",
       "mgmt-ipv6-prefix-length": 0,
-      "mac-address": "00:1c:73:85:94:c8",
+      "mac-address": "00:1c:73:e1:6b:cf",
       "labels": {
-        "clab-mgmt-net-bridge": "br-0d0d48b72eb4",
+        "clab-mgmt-net-bridge": "br-bf597558796a",
         "clab-node-group": "",
         "clab-node-kind": "ceos",
         "clab-node-lab-dir": "/workspace/wk_eos/containerlabs/dl_one/clab-cl_dl_one/leaf1",
@@ -59,9 +59,9 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "",
       "mgmt-ipv6-prefix-length": 0,
-      "mac-address": "00:1c:73:e7:5b:3b",
+      "mac-address": "00:1c:73:cc:3a:8c",
       "labels": {
-        "clab-mgmt-net-bridge": "br-0d0d48b72eb4",
+        "clab-mgmt-net-bridge": "br-bf597558796a",
         "clab-node-group": "",
         "clab-node-kind": "ceos",
         "clab-node-lab-dir": "/workspace/wk_eos/containerlabs/dl_one/clab-cl_dl_one/spine1",
@@ -80,13 +80,13 @@
       "a": {
         "node": "spine1",
         "interface": "eth1_1",
-        "mac": "aa:c1:ab:6e:19:a2",
+        "mac": "aa:c1:ab:ce:05:14",
         "peer": "z"
       },
       "z": {
         "node": "leaf1",
         "interface": "eth49_1",
-        "mac": "aa:c1:ab:fe:29:8d",
+        "mac": "aa:c1:ab:1e:04:ea",
         "peer": "a"
       }
     }

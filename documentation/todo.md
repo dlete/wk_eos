@@ -1,4 +1,16 @@
 # LIst of things to do
+How to create a lab
+* create directory under containerlabs, this is <lab_root>
+* create clab directory
+* create topology file
+* deploy with containlerlabs
+
+* create ansible.cfg in <lab_root>
+* create inventory directory
+* create host files
+* create group vars
+* create playbooks directory
+
 Start containerlabs AND ansible with one single dockercompose?
 Modify ansible image not to create any directories in the image and to map pwd to pwd of the host
 how to give a container a hostname

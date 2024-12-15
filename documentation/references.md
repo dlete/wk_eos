@@ -280,5 +280,9 @@ wsl -l -v
 ## Build image with `alpine` or with `Python`
 Analise both options (e.g. no Cli in Python).
 
+# Troubleshooting
+fatal: [clab-dl_02-leaf1]: FAILED! => {"changed": false, "msg": "Method not found"}
+fatal: [clab-dl_02-spine1]: FAILED! => {"changed": false, "msg": "Method not found"}
+Means that it can't find the collection
 
 [def]: ttps://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.htm
