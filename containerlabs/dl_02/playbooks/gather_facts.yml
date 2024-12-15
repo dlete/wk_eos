@@ -1,0 +1,9 @@
+- name: Network Getting Started First Playbook
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  hosts: FABRIC
+  tasks:
+
+    - name: Gather all legacy facts
+      arista.eos.eos_facts:
+        gather_subset: all

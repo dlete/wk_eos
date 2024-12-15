@@ -1,0 +1,11 @@
+# eAPI connectivity is via HTTPS (as opposed to CLI via SSH)
+# https://avd.arista.com/5.1/docs/installation/collection-installation.html
+# and
+# https://avd.arista.com/5.1/docs/getting-started/intro-to-ansible-and-avd.html
+ansible_connection: ansible.netcommon.httpapi
+ansible_network_os: arista.eos.eos
+
+# https://docs.ansible.com/ansible/latest/network/user_guide/platform_eos.html
+# this will ask for paramiko
+#ansible_connection: ansible.netcommon.network_cli
+#ansible_network_os: arista.eos.eos

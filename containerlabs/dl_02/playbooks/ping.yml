@@ -1,0 +1,53 @@
+---
+#
+# This playbook pings
+#
+- name: ICMP ping
+  hosts: FABRIC
+  connection: local
+  gather_facts: false
+  #collections:
+  #  - arista.avd
+  vars:
+    #fabric_dir_name: "{{fabric_name}}"
+    #execute_tasks: false
+    delegate: localhost
+  tasks:
+    # Check if host is already online.
+    # We run 2 pings because the first ping often fails.
+    - name: Initial ping...
+      delegate_to: "{{ delegate }}"
+      #ansible.builtin.shell: ping -c 1 -w 2 "{{ inventory_hostname }}"
+      command: ping -c 1 -w 2 "{{ inventory_hostname }}"
+      ignore_errors: true
+      changed_when: false
+      check_mode: false
+    
+    - name: Print message
+      ansible.builtin.debug:
+        msg: Hello world
+
+- name: Play number TWO
+  hosts: SPINES
+  connection: local
+  gather_facts: false
+  #collections:
+  #  - arista.avd
+  vars:
+    #fabric_dir_name: "{{fabric_name}}"
+    #execute_tasks: false
+    delegate: localhost
+  tasks:
+    # Check if host is already online.
+    # We run 2 pings because the first ping often fails.
+    - name: Second ping...
+      delegate_to: "{{ delegate }}"
+      #ansible.builtin.shell: ping -c 1 -w 2 "{{ inventory_hostname }}"
+      command: ping -c 1 -w 2 "{{ inventory_hostname }}"
+      ignore_errors: true
+      changed_when: false
+      check_mode: false
+    
+    - name: Print message
+      ansible.builtin.debug:
+        msg: Hello world for second time
