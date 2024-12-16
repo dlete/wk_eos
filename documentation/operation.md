@@ -79,6 +79,25 @@ The above will put you in bash shell. To enter CLI
 containerlab destroy --topo <path_to_topology_file>
 ```
 
+# Create a lab
+
+then comment out the line 
+#startup-config: init-configs/ceos-cfg.j2
+in the topology file
+
+arista in containerlabs
+https://containerlab.dev/manual/kinds/ceos/#user-defined-config
+
+
+firts time a switch boots
+configure startup file in the topology file
+boot device
+configure
+save to startup
+destroy lab/shutdown
+coment out the startup config
+boot -> boots with the ocnfiguration in startup
+
 
 
 # Archive, daily routine

@@ -245,6 +245,8 @@ git remote add origin git@git.heanet.ie:dlete/wk_eos.git
 git push -u origin --all
 git push -u origin --tags
 ```
+
+# Python
 ## Python packages, see available versions
 Find them in [PyPi](https://pypi)
 
@@ -257,7 +259,7 @@ ANSIBLE>
 Ansible lint>
 <https://pypi.org/project/ansible-lint/>
 
-
+# WSL
 ## WSL stop server
 Open PowerShell as an administrator
 ```bash
