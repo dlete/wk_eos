@@ -1,0 +1,28 @@
+---
+#
+# This playbook pings
+#
+- name: Ping, ICMP ECHO REQUEST/REPLY
+  hosts: FABRIC
+  connection: local
+  gather_facts: false
+  #collections:
+  #  - arista.avd
+  vars:
+    #fabric_dir_name: "{{fabric_name}}"
+    #execute_tasks: false
+    delegate: localhost
+  tasks:
+    # Check if host is already online.
+    # Run 2 pings because the first ping often fails.
+    - name: Ping from the nodes to the ansible host ...
+      delegate_to: "{{ delegate }}"
+      #ansible.builtin.shell: ping -c 1 -w 2 "{{ inventory_hostname }}"
+      command: ping -c 1 -w 5 "{{ inventory_hostname }}"
+      ignore_errors: true
+      changed_when: false
+      check_mode: false
+    
+    #- name: Print message
+    #  ansible.builtin.debug:
+    #    msg: Hello world

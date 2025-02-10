@@ -72,83 +72,128 @@ Privileged In Docker Compose With Code Examples
 
 # How to
 
-# Ansible
-## Ansible configuration, ansible.cfg
+
+## Ansible
+### Execute ansible ad-hoc commands
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible localhost -m ping -i ansible_root/inventory.txt
+```
+
+### Execute ansible playbook
+```bash
+docker exec ceos_basic_01_my_ans_1 ansible-playbook <playbook_filename>
+```
+
+### Ansible configuration, ansible.cfg
 https://docs.ansible.com/ansible/latest/reference_appendices/config.html
 
-## Ansible host key checking
+### Ansible host key checking
 https://www.geeksforgeeks.org/disabling-host-key-checking-in-ansible/
 https://stackoverflow.com/questions/23074412/how-to-set-host-key-checking-false-in-ansible-inventory-file
 
 
-## Verify inventory
+### Verify inventory
 ```bash
 ansible-inventory -i inventory.ini --list
 ```
 
-
-## Ansible, get information/documentation
+### Ansible, get information/documentation
 ```bash
 docker exec ceos_basic_01_my_ans_1 ansible-doc -l
 ```
 
-## Ansible, get help 
+### Ansible, get help 
 ```bash
 docker exec ceos_basic_01_my_ans_1 ansible-playbook --help
 ```
 
-## Ansible, execute a one-off command
+### Ansible, execute a one-off command
 ```bash
 ansible <hosts> -a <command>
 ansible <hosts> -m <module>
 ansible target1 -m ping
 ```
 
-## Ansible, execute a playbook
+### Ansible, execute a playbook
 ```bash
 ansible-playbook <playbook_name>
 ansible-playbook playbook_server.yaml
 ansible-playbook <playbook_name> -i <inventory_file>
 ```
 
-# Arista
-## Arista EOS, change from `bash` to `cli`
+## Arista
+### Arista EOS, change from `bash` to `cli`
 If you have arrived to `bash` from the `cli`, then just type `exit`.
 If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
 
-## Arista, enable LLDP in Docker
+### Arista, enable LLDP in Docker
 <https://youtu.be/RgbWDw__xqM?t=277>
 
 
+## Containerlabs
 
-# Docker
-## Alpine, list packages
+
+## Docker
+### Docker, connect to a running container
+```bash
+# for a server
+docker exec -it <container_name> bash
+# for an Arista
+docker exec -it <container_name> Cli
+docker exec -it ceos1 Cli
+```
+
+### Docker, restart containers
+```bash
+# restart container without loss configuration
+docker-compose stop
+```
+
+### Docker, wipe out everything
+```bash
+# wipe out everything
+docker-compose down
+```
+
+
+### Start the container
+```bash
+# map the host directory "$(pwd)/host_directory" (in your PC), to the directory "ansible" in the image"
+docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_dockerfile_02 bash
+docker run --rm -it -v $(pwd)/host_directory:/ansible_root dl_image_02 bash
+```
+This is the canonical way, through `dockercompose.yml` files:
+```bash
+docker-compose up -d
+```
+
+### Alpine, list packages
 `apk list -i`
 
-## Docker daemon, start
+### Docker daemon, start
 sudo service docker start
 
-## Docker daemon, verify 
+### Docker daemon, verify 
 sudo service docker status
 or
 docker run hello-world
 
-## Docker daemon, stop
+### Docker daemon, stop
 sudo service docker stop
 
 
-## Docker, see images
+### Docker, see images
 ```bash
 docker images
 ```
 
-## Docker, inspect image
+### Docker, inspect image
 See the details of the image, how has it been built.
 ```bash
 docker image inspect <image_name>
 ```
 
-## Docker, remove images
+### Docker, remove images
 <https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes>
 
 Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not tagged or associated with a container):
@@ -166,41 +211,41 @@ docker rmi <image> <image>
 ```
 
 
-## Docker, see containers
+### Docker, see containers
 ```bash
 docker ps
 docker container ls
 docker container ls -a
 ```
 
-## Docker, see cpu/memory consumption
+### Docker, see cpu/memory consumption
 ```bash
 docker stats
 ```
 
-## Docker, start container
+### Docker, start container
 ```bash
 docker pw
 ```
 
-## Docker, stop container
+### Docker, stop container
 ```bash
 docker stop <container__id/name?>
 ```
 
-## Attach/connect to a running container
+### Attach/connect to a running container
 ```shell
 docker exec -it <container_name> bash
 ```
 
-## Attach/connect to an Arista running image
+### Attach/connect to an Arista running image
 ```bash
 docker exec -it ceos1 Cli
 ```
 
 
-# Git
-## Git, change repository
+## Git
+### Git, change repository
 Add files using the command line or push an existing Git repository with the following command:
 ```bash
 cd existing_repo
@@ -209,7 +254,7 @@ git branch -M main
 git push -uf origin main
 ```
 
-## Git, setup repository
+### Git, setup repository
 Git global setup
 ```bash
 git config --global user.name "Daniel Lete"
@@ -246,8 +291,8 @@ git push -u origin --all
 git push -u origin --tags
 ```
 
-# Python
-## Python packages, see available versions
+## Python
+### Python packages, see available versions
 Find them in [PyPi](https://pypi)
 
 ANSIBLE_CORE
@@ -259,8 +304,8 @@ ANSIBLE>
 Ansible lint>
 <https://pypi.org/project/ansible-lint/>
 
-# WSL
-## WSL stop server
+## WSL
+### WSL stop server
 Open PowerShell as an administrator
 ```bash
 # see distributions and their status
@@ -275,16 +320,3 @@ wsl -d Ubuntu
 wsl -l -v
 ```
 <https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows>
-
-
-
-# To do
-## Build image with `alpine` or with `Python`
-Analise both options (e.g. no Cli in Python).
-
-# Troubleshooting
-fatal: [clab-dl_02-leaf1]: FAILED! => {"changed": false, "msg": "Method not found"}
-fatal: [clab-dl_02-spine1]: FAILED! => {"changed": false, "msg": "Method not found"}
-Means that it can't find the collection
-
-[def]: ttps://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.htm

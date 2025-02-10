@@ -1,30 +1,53 @@
 # LIst of things to do
-How to create a lab
-* create directory under containerlabs, this is <lab_root>
-* create clab directory
-* create topology file
-* deploy with containlerlabs
+## Understand ansible connection to arista
 
-* create ansible.cfg in <lab_root>
-* create inventory directory
-* create host files
-* create group vars
-* create playbooks directory
 
-Start containerlabs AND ansible with one single dockercompose?
-Modify ansible image not to create any directories in the image and to map pwd to pwd of the host
-how to give a container a hostname
-https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-to-containers
-https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#adding-ansible-command-shell-completion
+## What does the `|| true` do when bringing up the Docker container?
+`avd-quickstart:latest || true ; \`
 
-investigate Execution Environments
-https://docs.ansible.com/ansible/latest/getting_started_ee/index.html#getting-started-ee-index
 
-Copy ssh keys to nodes
+## Find name for the `containerlabs` directory
+`labs_containerlab`?
+`labs`?
+
+
+## topology files must have the extension `*.clab.yml`?
+
+
+## Where are ansible collections installed, where should be installed, understand
+
+
+## What does the line `-v /var/run/netns:/var/run/netns \` mean in:
+```bash
+docker run --rm -it --privileged \
+    --name container_containerlab \
+    --network host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/netns:/var/run/netns \
+    -v /etc/hosts:/etc/hosts \
+    -v /var/lib/docker/containers:/var/lib/docker/containers \
+    --pid="host" \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    ghcr.io/srl-labs/clab bash
+```
+
+## Copy ssh keys to nodes
 https://docs.ansible.com/ansible/latest/collections/ansible/netcommon/net_put_module.html#ansible-collections-ansible-netcommon-net-put-module
 https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix
 
-install arista.avd
+
+## Start containerlabs AND ansible with one single dockercompose?
+## Modify ansible image not to create any directories in the image and to map pwd to pwd of the host
+## how to give a container a hostname
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-to-containers
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#adding-ansible-command-shell-completion
+
+## investigate Execution Environments
+https://docs.ansible.com/ansible/latest/getting_started_ee/index.html#getting-started-ee-index
+
+
+## install arista.avd
 arista-galaxy collection arista.avd install
 
 How to stop a container
@@ -32,7 +55,10 @@ docker stop <container>
 docker kill <container>
 ps -aux | grep <containier id>
 
-How to remove a container
+## How to remove a container
+
+## Build image with `alpine` or with `Python`
+Analise both options (e.g. no Cli in Python).
 
 
 bring up container with ansible
