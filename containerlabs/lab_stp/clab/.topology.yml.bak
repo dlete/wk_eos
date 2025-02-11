@@ -1,4 +1,5 @@
-name: cl_dl_one
+# containerlab topology file
+name: lab_stp
 
 mgmt:
   network: custom_mgmt

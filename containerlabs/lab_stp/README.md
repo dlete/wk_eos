@@ -14,7 +14,7 @@ docker run --rm -it --privileged \
     -v $(pwd):$(pwd) \
     -w $(pwd) \
     -e AVD_GIT_USER="Daniel Lete" \
-    -e AVD_GIT_EMAIL="daniel.lete@heanet.ie" \
+    -e AVD_GIT_EMAIL="daniel.lete@gmail.com" \
     avd-quickstart:latest || true ; \
 ```
 

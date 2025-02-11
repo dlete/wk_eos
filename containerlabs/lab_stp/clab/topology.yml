@@ -1,0 +1,26 @@
+# containerlab topology file
+name: lab_stp
+
+mgmt:
+  network: custom_mgmt
+  ipv4-subnet: 192.168.123.0/24
+
+topology:
+  kinds:
+    ceos:
+      startup-config: init-configs/ceos-cfg.j2
+      image: arista/ceos:4.29.3M
+  defaults:
+    kind: ceos
+  nodes:
+    spine1:
+      mgmt-ipv4: 192.168.123.101
+    spine2:
+      mgmt-ipv4: 192.168.123.102
+    leaf1:
+      mgmt-ipv4: 192.168.123.103
+
+  links:
+    - endpoints: ["spine1:eth1_1", spine2:eth1_1]
+    - endpoints: ["spine1:eth49_1", "leaf1:eth49_1"]
+    - endpoints: ["spine2:eth49_1", "leaf1:eth49_2"]

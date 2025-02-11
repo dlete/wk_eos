@@ -7,7 +7,7 @@ mgmt:
 topology:
   kinds:
     ceos:
-      startup-config: init-configs/ceos-cfg.j2
+      #startup-config: init-configs/ceos-cfg.j2
       image: arista/ceos:4.29.3M
   defaults:
     kind: ceos
