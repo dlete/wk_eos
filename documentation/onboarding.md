@@ -22,3 +22,5 @@ All in `*.yml`. Do not use any other extension.
 Three letters.
 
 YAML, `*.yml`
+
+# FAQ

@@ -45,8 +45,9 @@ docker run --rm -it --privileged \
     --pid="host" \
     -v $(pwd):$(pwd) \
     -w $(pwd) \
-    ghcr.io/srl-labs/clab shell
+    ghcr.io/srl-labs/clab bash
 ```
+(it will end up with the shell `ash` because the container is an Alpine image and Alpine does not have the shell `bash`).
 
 With the AVD quickstart image
 ```shell
@@ -59,7 +60,7 @@ docker run --rm -it --privileged \
     -v $(pwd):$(pwd) \
     -w $(pwd) \
     -e AVD_GIT_USER="Daniel Lete" \
-    -e AVD_GIT_EMAIL="daniel.lete@heanet.ie" \
+    -e AVD_GIT_EMAIL="daniel.lete@gmail.com" \
     avd-quickstart:latest || true ; \
 ```
 You will see that the prompt has changed. 
@@ -70,12 +71,14 @@ Either by:
 * `docker ps` does render a running container with the name tag you gave it at the moment of creating it. 
 
 ### Deploy/launch a lab
-From within the containerlab docker
+From within the containerlab docker:
 
 ```shell
-containerlab deploy --topo <path_to_topology_file>
+sudo containerlab deploy --topo <path_to_topology_file>
+sudo containerlab deploy --topo <./<lab>/clab/topology.yml>
 ```
-topology files must have the extension `*.clab.yml`
+Topology files have the extension `*.yml` and should be within the directory `clab`. Usually have the filename `topology.yml`.
+Remember, you have to execute as `sudo`
 It will not bring the lab immediately. It may take about 1 minute (or more, depending on the number of containers).
 
 
@@ -83,7 +86,10 @@ It will not bring the lab immediately. It may take about 1 minute (or more, depe
 ### Connect to the nodes
 
 #### By attaching to the docker image
+From any terminal (does not have to the docker container). For example: you could have one terminal for each node.
 ```shell
+# The following command will put you in the EOS CLI. 
+# Note that the keyword is "Cli", not "cli"
 docker exec -it <container_name> Cli
 # or
 docker exec -it <container_name> bash
@@ -104,7 +110,7 @@ Go to, execute in, the Docker container that has the containerlab image. For the
 # Verify the node containers are running
 docker ps
 # Destroy the lab
-containerlab destroy --topo <path_to_topology_file>
+sudo containerlab destroy --topo <path_to_topology_file>
 # Verify the node containers have stopped
 docker ps
 ```
@@ -209,6 +215,11 @@ FABRIC:
     ansible_httpapi_validate_certs: False
     ansible_httpapi_ciphers: AES256-SHA:DHE-RSA-AES256-SHA:AES128-SHA:DHE-RSA-AES128-SHA
 ```
+
+### Containerlabs, shell is `ash` instead of `bash`
+Usually, an Alpine Linux image doesn't contain `bash`, Instead you can use `/bin/ash`, `/bin/sh`, `ash` or only `sh`.
+
+Found in [stackoverflow]{https://stackoverflow.com/questions/35689628/starting-a-shell-in-the-docker-alpine-container}
 
 ### Start the `dockerd` daemon
 Starting the daemon directly does not seem to work (at least in an Ubuntu instance in WLS). I have found that what it works is this sequence. 
