@@ -47,9 +47,9 @@ docker run --rm -it --privileged \
     -w $(pwd) \
     ghcr.io/srl-labs/clab bash
 ```
-Note that it will end up with the shell `ash` istead of `bash`. That is because the container is an Alpine image and Alpine does not have the shell `bash`. You can check with `echo $SHELL`.
+Note that it will end up with the shell `ash` istead of `bash`. That is because the container is an Alpine image and Alpine does not have the shell `bash`. You can verify what shell does use the terminal with `echo $SHELL`.
 
-With the AVD quickstart image
+With the AVD quickstart image (this container does not place you as root, you will have to sudo when necessary)
 ```shell
 docker run --rm -it --privileged \
     --name container_avd \
@@ -76,6 +76,8 @@ From within the containerlab docker:
 ```shell
 sudo containerlab deploy --topo <path_to_topology_file>
 sudo containerlab deploy --topo <./<lab>/clab/topology.yml>
+# for example:
+# sudo containerlab deploy --topo lab_stp/clab/topology.yml
 ```
 Topology files have the extension `*.yml` and should be within the directory `clab`. Usually have the filename `topology.yml`.
 Remember, you have to execute as `sudo`. But if the container did place you already as root, then you do not need to.

@@ -70,8 +70,16 @@ Privileged In Docker Compose With Code Examples
 <https://linuxhint.com/privileged-in-docker-compose-with-code-examples/>
 
 
-# How to
+# How to, arista
+### Arista EOS, change from `bash` to `cli`
+If you have arrived to `bash` from the `cli`, then just type `exit`.
+If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
 
+### Arista, enable LLDP in Docker
+<https://youtu.be/RgbWDw__xqM?t=277>
+
+
+# How to
 
 ## Ansible
 ### Execute ansible ad-hoc commands
@@ -120,14 +128,6 @@ ansible-playbook <playbook_name>
 ansible-playbook playbook_server.yaml
 ansible-playbook <playbook_name> -i <inventory_file>
 ```
-
-## Arista
-### Arista EOS, change from `bash` to `cli`
-If you have arrived to `bash` from the `cli`, then just type `exit`.
-If you have arrived to `bash` direclty, then `Cli` (the first letter is capital).
-
-### Arista, enable LLDP in Docker
-<https://youtu.be/RgbWDw__xqM?t=277>
 
 
 ## Containerlabs
