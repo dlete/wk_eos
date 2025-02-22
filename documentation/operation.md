@@ -49,6 +49,9 @@ docker run --rm -it --privileged \
 ```
 Note that it will end up with the shell `ash` istead of `bash`. That is because the container is an Alpine image and Alpine does not have the shell `bash`. You can verify what shell does use the terminal with `echo $SHELL`.
 
+Note that this image will put you directly as root. 
+
+
 With the AVD quickstart image (this container does not place you as root, you will have to sudo when necessary)
 ```shell
 docker run --rm -it --privileged \
